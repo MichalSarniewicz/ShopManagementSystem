@@ -1,3 +1,3 @@
 Shop Managenet System
 
-priject still in progress
+Project still in progress
