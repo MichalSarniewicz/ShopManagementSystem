@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Shop Management System</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+<div class="login-page">
+	<div class="form">
+		<h2 id= welcome>Welcome</h2>
+		<div th:if=" ${#httpServletRequest.getParameter('message')} == 'error'">
+		<p class="message">Incorrect username or password.</p>
+		</div>
+		<div th:if=" ${#httpServletRequest.getParameter('message')} == 'logout'">
+		<p class="message">You have been logged out.</p>
+		</div>
+		<form class="login-form" th:action="@{/login}" method="post">
+			<input type="text" id="username" name="username" placeholder="username" /> 
+			<input type="password" id="password" name="password" placeholder="password" />
+			<button>login</button>
+			<p class="message2">
+				Not registered? <a href="#">Contact admin</a>
+			</p>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

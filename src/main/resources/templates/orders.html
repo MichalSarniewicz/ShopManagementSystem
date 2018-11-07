@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Orders</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+	<div class="navbar">
+		<a id=link class="active" href="/menu">Menu</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/products">Product list</a> 
+				<a href="/productDetails?id=1">Product details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/orders">Order list</a> 
+				<a href="/orderDetails?id=1">Order details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+		    <button class="dropbtn">
+				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/supplies">Supply list</a> 
+				<a href="/supplyDetails?id=1">Supply details</a>
+				<a href="/suppliers">Suppliers list</a>
+				<a href="/supplierDetails?id=1">Suppliers details</a>
+			</div>
+		</div>
+		<div class="dropdown" id=account>
+			<button class="dropbtn">
+				<a href="#">Account</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content" id="dropdown-account">
+				<a href="#">Logged as:
+				<div sec:authorize="isAuthenticated()">
+					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
+			  	</div>
+			  	</a> 
+			  	<a href="/logout">Logout</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content">
+	
+	<a th:href="@{/menu}">Menu </a> > Orders
+
+	<h1>Orders:</h1>
+
+	<div>
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Date and time</th>
+				<th>Gross sum (PLN)</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="order : ${orders}">
+
+				<td th:utext="${order.id}">...</td>
+				<td th:utext="${{order.dateAndTime}}">...</td>
+				<td th:utext="${order.grossPrice}">...</td>
+				<td>
+					<form action="orderDetails">
+						<input type="hidden" name="id" th:value="${order.id}" /> <input
+							type="submit" value="Details>>">
+					</form>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+	</div>
+</body>
+</html>

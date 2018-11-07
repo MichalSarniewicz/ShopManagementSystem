@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+           "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>Supplier details</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+	<div class="navbar">
+		<a id=link class="active" href="/menu">Menu</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/products">Product list</a> 
+				<a href="/productDetails?id=1">Product details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/orders">Order list</a> 
+				<a href="/orderDetails?id=1">Order details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+		    <button class="dropbtn">
+				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/supplies">Supply list</a> 
+				<a href="/supplyDetails?id=1">Supply details</a>
+				<a href="/suppliers">Suppliers list</a>
+				<a href="/supplierDetails?id=1">Suppliers details</a>
+			</div>
+		</div>
+		<div class="dropdown" id=account>
+			<button class="dropbtn">
+				<a href="#">Account</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content" id="dropdown-account">
+				<a href="#">Logged as:
+				<div sec:authorize="isAuthenticated()">
+					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
+			  	</div>
+			  	</a> 
+			  	<a href="/logout">Logout</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content">
+	
+	<a th:href="@{/menu}">Menu </a> >
+	<a th:href="@{/suppliers}"> Suppliers </a> > Supplier details
+
+	<h1>Supplier details:</h1>
+
+	<div>
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Name</th>
+				<th>Adress</th>
+				<th>Phone number</th> 
+				<th>E-mail</th> 
+				<th>Comment</th>
+
+			</tr>
+			<tr th:each="supplier : ${suppliers}">
+				<div
+					th:if="${supplier.id} == ${#httpServletRequest.getParameter('id')}">
+				<td th:utext="${supplier.id}">...</td>
+				<td th:utext="${supplier.name}">...</td>
+				<td th:utext="${supplier.adress}">...</td>
+				<td th:utext="${supplier.phoneNumber}">...</td>
+				<td th:utext="${supplier.email}">...</td>
+				<td th:utext="${supplier.comment}">...</td>
+				</div>
+			</tr>
+		</table>
+	</div>
+
+	<!--  
+        <form action="productsEdit">
+			<input type="submit" value="EDIT">
+		</form>
+		-->
+
+	<h2>Supplies:</h2>
+	<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Net sum (PLN)</th>
+				<th>Gross sum (PLN)</th>
+				<th>Date and time</th>
+				<th>Action</th>
+			</tr>
+		<tr th:each="supply: ${supplies}">
+
+			<div th:if="${supply.supplierId} == ${#httpServletRequest.getParameter('id')}">
+
+				<td th:utext="${supply.id}">...</td>
+				<td th:utext="${supply.netSum}">...</td>
+				<td th:utext="${supply.grossSum}">...</td>
+				<td th:utext="${#dates.format(supply.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
+				<td>
+					<form action="supplyDetails">
+						<input type="hidden" name="id" th:value="${supply.id}" /> <input
+							type="submit" value="Details>>">
+					</form>
+				</td>
+			</div>
+
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
+
