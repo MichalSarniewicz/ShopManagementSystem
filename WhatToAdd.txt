@@ -1,0 +1,10 @@
+foreign keys, one to many,
+filters
+button previous and next for first and last, fix and new places
+password to database?
+css, tables
+ 
+admin version
+
+ 
+ 

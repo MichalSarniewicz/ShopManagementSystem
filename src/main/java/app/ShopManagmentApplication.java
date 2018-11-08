@@ -7,10 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 import configuration.SecurityConfig;
 
-//TODO porob foreig keys i polacz w mapowanie one to many itp
-//TODO fix wyszuiwarka, zarzadzanie kontami, baza danych na haslo,
-//TODO add something to sort rows in tabels
-
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 @ComponentScan(basePackageClasses = controller.MainController.class)
 @ComponentScan(basePackageClasses = SecurityConfig.class)

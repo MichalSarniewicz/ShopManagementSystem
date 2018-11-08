@@ -2,16 +2,10 @@ package controller;
 
 import static java.lang.Math.toIntExact;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -85,13 +79,7 @@ public class MainController {
 
 		return "products";
 	}
-/*
-	@RequestMapping(value = { "/productDetails" }, method = RequestMethod.POST) 
-	public String productDetailsPost(Model model, @ModelAttribute("id") Long id) {
 
-		return "productDetails";
-	}
-*/
 	@RequestMapping(value = { "/productDetails" }, method = RequestMethod.GET)
 	public String productDetailsGet(Model model) {
 
@@ -147,7 +135,6 @@ public class MainController {
 		return "orders";
 	}
 
-	// TODO make secendary keys itp
 	@RequestMapping(value = { "/supplyDetails" }, method = RequestMethod.GET)
 	public String supplyDetailsGet(Model model) {
 		
