@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Products</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+	<script>
+	function myFunction() {
+	    var x = document.getElementById("filters");
+	    if (x.style.display === "block") {
+	        x.style.display = "none";
+	    } else {
+	        x.style.display = "block";
+	    }
+	}
+	</script>
+	
+	<div class="navbar">
+		<a id=link class="active" href="/menu">Menu</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/products">Product list</a> <a href="/productDetails?id=1">Product
+					details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/orders">Order list</a> <a href="/orderDetails?id=1">Order
+					details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/supplies">Supply list</a> <a href="/supplyDetails?id=1">Supply
+					details</a> <a href="/suppliers">Suppliers list</a> <a
+					href="/supplierDetails?id=1">Suppliers details</a>
+			</div>
+		</div>
+		<div class="dropdown" id=account>
+			<button class="dropbtn">
+				<a href="#">Account</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content" id="dropdown-account">
+				<a href="#">Logged as:
+					<div sec:authorize="isAuthenticated()">
+						<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+					</div>
+				</a> <a href="/logout">Logout</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<a th:href="@{/menu}">Menu </a> > Products
+
+		<h1>Products:</h1>
+
+		<button class="button" onclick="myFunction()">Filters</button>
+
+		<form class="filters" id="filters">
+			FILTERS ID:<br> <input type="text" name="id"><br>
+
+			Brand:<br> <input type="text" name="brand"><br>
+
+			Name: <br> <input type="text" name="name"><br>
+
+			Quantity: <br> <input type="number" name="fromQuantity">
+			- <input type="text" name="toQuantity"><br> Gross Price:
+			<br> <input type="number" name="fromNetprice"> - <input
+				type="text" name="toNetprice"><br> <input type="submit" class="button"
+				value="Submit">
+
+
+			<!--  
+		<th><input type="text" th:field="*{netPrice}" /></th>
+		<th><input type="text" th:field="*{grossPrice}" /></th>
+		<th><input type="text" th:field="*{taxRate}" /></th>
+		<th><input type="text" th:field="*{quantityInWarehouse}" /></th>
+		<th><input type="text" th:field="*{quantityInStore}" /></th>
+		<th><input type="text" th:field="*{unit}" /></th>
+		<th><input type="submit" value="Submit" /></th> -->
+		
+		</form>
+
+
+		<script type="text/javascript" th:inline="javascript">
+			if (fromQuantity != null) {
+				document.getElementById('intFromQuantity').innerHTML = parseInt(
+						fromQuantity, 10);
+
+			} else
+				intFromQuantity = 0;
+		</script>
+
+		<div>
+			<table border="1">
+				<tr class="table-top">
+					<th>ID</th>
+					<th>Brand</th>
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Gross Price (PLN)</th> 
+					<th>Actions</th> 
+
+				</tr>
+				<tr th:each="product : ${products}">
+
+					<div
+						th:if="${product.id} == ${#httpServletRequest.getParameter('id')} 
+					or ${#httpServletRequest.getParameter('id')} == ''
+					or ${#httpServletRequest.getParameter('id')} == null">
+
+						<div
+							th:if="${#httpServletRequest.getParameter('name')} == null 
+					or ${#httpServletRequest.getParameter('name')} == ''
+					or ${#strings.containsIgnoreCase(product.name, #httpServletRequest.getParameter('name'))}">
+
+							<div
+								th:if="${#httpServletRequest.getParameter('brand')} == null 
+					or ${#httpServletRequest.getParameter('brand')} == ''
+					or ${#strings.containsIgnoreCase(product.brand, #httpServletRequest.getParameter('brand'))}">
+
+								<div
+									th:if="${#httpServletRequest.getParameter('fromQuantity')} == null 
+					or ${#httpServletRequest.getParameter('fromQuantity')} == ''
+					or ${#httpServletRequest.getParameter('intFromQuantity') &lt; product.quantity}">
+
+									<div
+										th:if="${#httpServletRequest.getParameter('toQuantity')} == null 
+					or ${#httpServletRequest.getParameter('toQuantity')} == ''
+					or ${#httpServletRequest.getParameter('toQuantity') &gt; product.quantity}">
+
+										<div
+											th:if="${#httpServletRequest.getParameter('fromNetprice')} == null 
+					or ${#httpServletRequest.getParameter('fromNetPrice')} == ''
+					or ${#httpServletRequest.getParameter('fromNetPrice') &lt; product.netPrice}">
+
+											<div
+												th:if="${#httpServletRequest.getParameter('toNetprice')} == null 
+					or ${#httpServletRequest.getParameter('toNetPrice')} == ''
+					or ${#httpServletRequest.getParameter('toNetPrice') &gt; product.netPrice}">
+
+												<td th:utext="${product.id}">...</td>
+												<td th:utext="${product.brand}">...</td>
+												<td th:utext="${product.name}">...</td>
+												<td th:utext="${product.quantity}">...</td>
+												<td th:utext="${product.grossPrice}">...</td>
+												<td>
+													<form action="productDetails">
+														<input type="hidden" name="id" th:value="${product.id}" />
+														<input type="submit" class="button" value="Details >>">
+													</form> <!--  <button type="button">edit</button> -->
+												</td>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

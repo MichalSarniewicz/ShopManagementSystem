@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Shop Management System</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+	<div class="navbar">
+		<a id=link class="active" href="/menu">Menu</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/products">Product list</a> 
+				<a href="/productDetails?id=1">Product details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/orders">Order list</a> 
+				<a href="/orderDetails?id=1">Order details</a>
+			</div>
+		</div>
+		<div class="dropdown">
+		    <button class="dropbtn">
+				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/supplies">Supply list</a> 
+				<a href="/supplyDetails?id=1">Supply details</a>
+				<a href="/suppliers">Suppliers list</a>
+				<a href="/supplierDetails?id=1">Suppliers details</a>
+			</div>
+		</div>
+		<div class="dropdown" id=account>
+			<button class="dropbtn">
+				<a href="#">Account</a> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content" id="dropdown-account">
+				<a href="#">Logged as:
+				<div sec:authorize="isAuthenticated()">
+					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
+			  	</div>
+			  	</a> 
+			  	<a href="/logout">Logout</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--  <h1>Menu</h1> -->
+
+	<table id="menu">
+		<tr>
+			<th><a id='icon' th:href="@{/products}"> <img border="0"
+					alt="products" th:src="@{'/images/product.png'}">
+			</a> </br> <a href="/products">Products</a></th>
+
+			<th><a id='icon' th:href="@{/orders}"><img border="0"
+					alt="orders" th:src="@{'/images/transaction.png'}"> </a> </br> <a
+				href="/orders">Orders</a></th>
+			<th><a id='icon' th:href="@{/supplies}"><img border="0"
+					alt="supplies" th:src="@{'/images/supply.png'}"> </a> </br> <a
+				href="/supplies">Supplies</a></th>
+		</tr>
+		<tr>
+
+			<th><a id='icon' th:href="@{/suppliers}"><img border="0"
+					alt="suppliers" th:src="@{'/images/supplier.png'}"> </a> </br> <a
+				href="/suppliers">Suppliers</a></th>
+		</tr>
+</body>
+
+</html>
