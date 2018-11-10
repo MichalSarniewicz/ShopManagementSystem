@@ -60,7 +60,7 @@
 
 
 
-
+<!--  
 		<h1>Product details:</h1>
 		<span class="nav-buttons">
 			<form action="productDetails" id="prev-btn">
@@ -77,7 +77,7 @@
 		</span>
 		<br>
 <br>
-
+-->
 <br>
 		<div>
 			<table border="1">
@@ -93,25 +93,20 @@
 					<th>Quantity in warehouse</th>
 					<th>Quantity in store</th>
 					<th>Unit</th>
-
-
 				</tr>
-				<tr th:each="product : ${products}">
-
-					<div
-						th:if="${product.id} == ${#httpServletRequest.getParameter('id')}">
-						<td th:utext="${product.id}">...</td>
-						<td th:utext="${product.brand}">...</td>
-						<td th:utext="${product.name}">...</td>
-						<td th:utext="${product.category}">...</td>
-						<td th:utext="${product.quantity}">...</td>
-						<td th:utext="${product.netPrice}">...</td>
-						<td th:utext="${product.grossPrice}">...</td>
-						<td th:utext="${product.taxRate}">...</td>
-						<td th:utext="${product.quantityInWarehouse}">...</td>
-						<td th:utext="${product.quantityInStore}">...</td>
-						<td th:utext="${product.unit}">...</td>
-					</div>
+				<tr>
+						<td th:utext="${product?.id}">...</td>
+						<td th:utext="${product?.brand}">...</td>
+						<td th:utext="${product?.name}">...</td>
+						<td th:utext="${product?.category}">...</td>
+						<td th:utext="${product?.quantity}">...</td>
+						<td th:utext="${product?.netPrice}">...</td>
+						<td th:utext="${product?.grossPrice}">...</td>
+						<td th:utext="${product?.taxRate}">...</td>
+						<td th:utext="${product?.quantityInWarehouse}">...</td>
+						<td th:utext="${product?.quantityInStore}">...</td>
+						<td th:utext="${product?.unit}">...</td>
+					
 				</tr>
 			</table>
 		</div>

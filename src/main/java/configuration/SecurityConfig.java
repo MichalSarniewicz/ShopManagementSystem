@@ -59,10 +59,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.httpBasic()
         .and()
         .authorizeRequests()
-        	.antMatchers("/css/**", "/js/**", "/images/**")
+        	.antMatchers("/css/**", "/js/**", "/images/**", "/h2_console/**", "/h2_console/**")
         	.permitAll()
         	.anyRequest()
         	.permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
     
     @Bean

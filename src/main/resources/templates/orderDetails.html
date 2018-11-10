@@ -62,7 +62,7 @@
 
 
 	<h1>Order details:</h1>
-
+<!-- 
 	<form action="orderDetails">
 		<input type="hidden" name="id"
 			th:value="${#httpServletRequest.getParameter('id')}-1" /> <input
@@ -74,7 +74,7 @@
 			th:value="${#httpServletRequest.getParameter('id')}+1" /> <input
 			type="submit" value="next>>">
 	</form>
-
+-->
 	<div>
 		<table border="1">
 			<tr class="table-top">
@@ -86,18 +86,14 @@
 				<th>Cashdesk ID</th>
 			</tr>
 
-			<tr th:each="order : ${orders}">
+			<tr >
+					<td th:utext="${order?.id}">...</td>
+					<td th:utext="${order?.netPrice}">...</td>
+					<td th:utext="${order?.grossPrice}">...</td>
+					<td th:utext="${#dates.format(order?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
+					<td th:utext="${order?.employeeId}">...</td>
+					<td th:utext="${order?.cashdeskId}">...</td>
 
-				<div
-					th:if="${order.id} == ${#httpServletRequest.getParameter('id')}">
-					<td th:utext="${order.id}">...</td>
-					<td th:utext="${order.netPrice}">...</td>
-					<td th:utext="${order.grossPrice}">...</td>
-					<td th:utext="${#dates.format(order.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
-					<td th:utext="${order.employeeId}">...</td>
-					<td th:utext="${order.cashdeskId}">...</td>
-
-				</div>
 			</tr>
 		</table>
 	</div>
@@ -113,24 +109,22 @@
 			<th>Gross sum (PLN)</th>
 			<th>Action</th>
 		</tr>
-		<tr th:each="orderDetail: ${orderDetails}">
+		<tr th:each="product: ${products}">
 
-			<div
-				th:if="${orderDetail.orderId} == ${#httpServletRequest.getParameter('id')}">
 
-				<td th:utext="${orderDetail.productId}">...</td>
-						<td th:utext="${productArray[orderDetail.productId].brand}">...</td>
-				<td th:utext="${productArray[orderDetail.productId].name}">...</td>
-				<td th:utext="${productArray[orderDetail.productId].grossPrice}">...</td>
-				<td th:utext="${orderDetail.quantity}">...</td>
-				<td th:utext="${productArray[orderDetail.productId].grossPrice*orderDetail.quantity}">...</td>
-				<td>
+				<td th:utext="${product?.id}">...</td>
+				<td th:utext="${product?.brand}">...</td>
+				<td th:utext="${product?.name}">...</td>
+				<td th:utext="${product?.grossPrice}">...</td>
+				<td th:utext="${product?.quantity}">...</td> tu nizej moze byc zle, uwaga, mnozenie nulli?-->
+				<td th:utext="${product?.grossSum}">...</td>-->
+				<td> 
 					<form action="productDetails">
-						<input type="hidden" name="id" th:value="${orderDetail.productId}" />
+						<input type="hidden" name="id" th:value="${product?.id}" />
 						<input type="submit" value="Details>>">
 					</form>
 				</td>
-			</div>
+		
 		</tr>
 	</table>
 </div>

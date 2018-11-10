@@ -32,8 +32,8 @@ create table OrderDetails
 	orderId	BIGINT not null,
 	productId BIGINT not null,	
 	quantity integer not null,
-	primary key(orderDetailsId)
-	/*foreign key(productId) REFERENCES Product(id)*/
+	primary key(orderDetailsId),
+	foreign key(productId) REFERENCES Product(id)
 	/*foreign key(orderId) REFERENCES Orders(id)*/
 );
 
@@ -66,3 +66,15 @@ create table SupplyDetails
 	quantity integer not null,
 	primary key(supplyDetailsId)
 );
+
+/*create table ProductWithOrderInfo
+(
+	id BIGINT not null,
+	name LONGVARCHAR not null,
+	quantity integer not null,
+	brand VARCHAR(1024),
+	grossPrice DECIMAL(10,2) not null,
+	grossSum DECIMAL(10,2) not null,
+	
+	primary key(id)
+);*/

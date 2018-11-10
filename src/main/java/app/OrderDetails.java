@@ -11,11 +11,13 @@ public class OrderDetails {
 	private Long orderDetailsId;
 
 	@NotNull
+	//@ManyToOne(targetEntity = Order.class)
+	//@JoinColumn(name = "id", nullable = false)
 	private Long orderId;
 
 	@NotNull
-	//@ManyToOne(targetEntity = Product.class)
-	//@JoinColumn(name = "id", nullable = false)
+	@ManyToOne(targetEntity = Product.class)
+	@JoinColumn(name = "id", nullable = false)
 	private Long productId;
 
 	@NotNull
