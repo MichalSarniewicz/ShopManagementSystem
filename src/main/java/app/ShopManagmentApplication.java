@@ -12,6 +12,7 @@ import configuration.SecurityConfig;
 @ComponentScan(basePackageClasses = SecurityConfig.class)
 @ComponentScan(basePackageClasses = app.OrderDetailsRepository.class)
 @ComponentScan(basePackageClasses = app.SupplierRepository.class)
+@ComponentScan(basePackageClasses = app.ProductWithOrderInfo.class)
 
 public class ShopManagmentApplication {
 	

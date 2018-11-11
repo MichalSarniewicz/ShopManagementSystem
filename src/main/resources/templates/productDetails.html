@@ -126,24 +126,16 @@
 				<th>Quantity</th>
 				<th>Action</th>
 			</tr>
-			<tr th:each="orderDetail: ${orderDetails}">
-
-				<div
-					th:if="${orderDetail.productId} == ${#httpServletRequest.getParameter('id')}">
-
-					<td th:utext="${orderDetail.orderId}">...</td>
-					<!--<td th:utext="${orderArray[orderDetail.orderId].netPrice}"> ...</td>
-				 <td th:utext="${{orderArray[orderDetail.orderId].dateAndTime}}">...</td>-->
-					<td
-						th:text="${#dates.format(orderArray[orderDetail.orderId].dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
-
-					<td th:utext="${orderDetail.quantity}">...</td>
-					<td>
+			<tr th:each="order: ${orders}">
+				<td th:utext="${orderDetail?.orderId}">...</td>
+				<td th:text="${#dates.format(order?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
+				<td th:utext="${order?.quantity}">...</td>
+				<td>
 						<form action="orderDetails">
 							<input type="hidden" name="id" th:value="${orderDetail.orderId}" />
 							<input type="submit" class="button" value="Details >>">
 						</form>
-					</td>
+				</td>
 				</div>
 
 			</tr>

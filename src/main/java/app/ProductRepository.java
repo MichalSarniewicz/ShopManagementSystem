@@ -12,5 +12,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 	
 	@Query( value = "SELECT * FROM PRODUCT WHERE id IN ?#{[0]}", 
 			  nativeQuery = true)
-	ArrayList<Product> findByIds(List<Long> list);//mayby id instead ids?
+	ArrayList<Product> findByIds(List<Long> list);
 }
