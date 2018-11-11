@@ -10,14 +10,14 @@
 <body>
 
 	<div class="navbar">
-		<a id=link class="active" href="/menu">Menu</a>
+		<a id=link class="active" href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/products">Product list</a> 
-				<a href="/productDetails?id=1">Product details</a>
+				<a href="/products">Product list</a> <a href="/productDetails/1">Product
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -25,19 +25,18 @@
 				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/orders">Order list</a> 
-				<a href="/orderDetails?id=1">Order details</a>
+				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
-		    <button class="dropbtn">
+			<button class="dropbtn">
 				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/supplies">Supply list</a> 
-				<a href="/supplyDetails?id=1">Supply details</a>
-				<a href="/suppliers">Suppliers list</a>
-				<a href="/supplierDetails?id=1">Suppliers details</a>
+				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
+					details</a> <a href="/suppliers">Suppliers list</a> <a
+					href="/supplierDetails/1">Suppliers details</a>
 			</div>
 		</div>
 		<div class="dropdown" id=account>
@@ -46,81 +45,75 @@
 			</button>
 			<div class="dropdown-content" id="dropdown-account">
 				<a href="#">Logged as:
-				<div sec:authorize="isAuthenticated()">
-					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
-			  	</div>
-			  	</a> 
-			  	<a href="/logout">Logout</a>
+					<div sec:authorize="isAuthenticated()">
+						<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+					</div>
+				</a> <a href="/logout">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="content">
-	
-	<a th:href="@{/menu}">Menu </a> >
-	<a th:href="@{/supplies}"> Supplies </a> > Supply details
 
-	<h1>Supply details:</h1>
-	
-	<div>
-		<table border="1">
-			<tr class="table-top">
-				<th>ID</th>
-				<th>Net sum (PLN)</th>
-				<th>Gross sum</th>
-				<th>Date and time</th>
-				<th>Supplier ID</th>
-			</tr>
-			<tr th:each="supply : ${supplies}">
-				<div
-					th:if="${supply.id} == ${#httpServletRequest.getParameter('id')}">
-					<td th:utext="${supply.id}">...</td>
-					<td th:utext="${supply.netSum}">...</td>
-					<td th:utext="${supply.grossSum}">...</td>
-					<td th:utext="${#dates.format(supply.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
-					<td th:utext="${supply.supplierId}">...</td>
-				</div>
-			</tr>
-		</table>
-	</div>
+		<a th:href="@{/home}">Home </a> > <a th:href="@{/supplies}">
+			Supplies </a> > Supply details
 
-	<!--  
+		<h1>Supply details:</h1>
+
+		<div>
+			<table border="1">
+				<tr class="table-top">
+					<th>ID</th>
+					<th>Net sum (PLN)</th>
+					<th>Gross sum (PLN)</th>
+					<th>Date</th>
+					<th>Supplier ID</th>
+				</tr>
+				<tr>
+					<td th:utext="${supply?.id}">...</td>
+					<td th:utext="${supply?.netSum}">...</td>
+					<td th:utext="${supply?.grossSum}">...</td>
+					<td
+						th:utext="${#dates.format(supply?.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
+					<td th:utext="${supply?.supplierId}">...</td>
+
+				</tr>
+			</table>
+		</div>
+
+		<!--  
         <form action="productsEdit">
 			<input type="submit" value="EDIT">
 		</form>
 		-->
-	<h2>Supplied Products:</h2>
-	<table border="1">
-		<tr class="table-top">
-			<th>ID</th>
-			<th>Brand</th>
-			<th>Name</th>
-			<th>Gross price (PLN)</th>
-			<th>Quantity</th>
-			<th>Gross sum (PLN)</th>
-			<th>Action</th>
-		</tr>
-		<tr th:each="supplyDetail: ${supplyDetails}">
+		<h2>Supplied Products:</h2>
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Brand</th>
+				<th>Name</th>
+				<th>Gross price (PLN)</th>
+				<th>Quantity</th>
+				<th>Gross sum (PLN)</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="product: ${products}">
 
-			<div
-				th:if="${supplyDetail.supplyId} == ${#httpServletRequest.getParameter('id')}">
-
-				<td th:utext="${supplyDetail.productId}">...</td>
-				<td th:utext="${productArray[supplyDetail.productId].brand}">...</td>
-				<td th:utext="${productArray[supplyDetail.productId].name}">...</td>
-				<td th:utext="${productArray[supplyDetail.productId].grossPrice}">...</td>
-				<td th:utext="${supplyDetail.quantity}">...</td>
-				<td th:utext="${productArray[supplyDetail.productId].grossPrice*supplyDetail.quantity}">...</td>
+				<td th:utext="${product?.Id}">...</td>
+				<td th:utext="${product?.brand}">...</td>
+				<td th:utext="${product?.name}">...</td>
+				<td th:utext="${product?.grossPrice}">...</td>
+				<td th:utext="${product?.quantity}">...</td>
+				<td th:utext="${product?.grossSum}">...</td>
 				<td>
-					<form action="productDetails">
-						<input type="hidden" name="id" th:value="${supplyDetail.productId}" />
-						<input type="submit" value="Details>>">
+					<form th:action="@{/productDetails/}+ ${product?.id}">
+						<input type="submit" class="button" value="Details >>">
 					</form>
 				</td>
-			</div>
+				</div>
 
-		</tr>
-	</table>
+			</tr>
+		</table>
 
 	</div>
 </body>

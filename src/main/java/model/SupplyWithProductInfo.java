@@ -1,15 +1,13 @@
-package app;
+package model;
 
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class ProductWithOrderInfo {
+public class SupplyWithProductInfo {
 
 	@Id
 	private Long id;
@@ -28,11 +26,11 @@ public class ProductWithOrderInfo {
 	@NotNull
 	private BigDecimal grossSum;
 	
-	public ProductWithOrderInfo() {
+	public SupplyWithProductInfo() {
 		super();
 	}
 
-	public ProductWithOrderInfo(Long id, String brand, @NotNull String name, @NotNull BigDecimal grossPrice,
+	public SupplyWithProductInfo(Long id, String brand, @NotNull String name, @NotNull BigDecimal grossPrice,
 			@NotNull int quantity, @NotNull BigDecimal grossSum) {
 		super();
 		this.id = id;

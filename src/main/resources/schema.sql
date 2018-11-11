@@ -23,7 +23,6 @@ create table Orders
 	employeeId integer not null,
  	cashdeskId integer not null,
  	primary key(id)
- 	
 );
 
 create table OrderDetails
@@ -34,7 +33,6 @@ create table OrderDetails
 	quantity integer not null,
 	primary key(orderDetailsId),
 	foreign key(productId) REFERENCES Product(id)
-	/*foreign key(orderId) REFERENCES Orders(id)*/
 );
 
 create table Supplier
@@ -64,17 +62,6 @@ create table SupplyDetails
 	supplyId	BIGINT not null,
 	productId BIGINT not null,	
 	quantity integer not null,
-	primary key(supplyDetailsId)
+	primary key(supplyDetailsId),
+	foreign key(productId) REFERENCES Product(id)
 );
-
-/*create table ProductWithOrderInfo
-(
-	id BIGINT not null,
-	name LONGVARCHAR not null,
-	quantity integer not null,
-	brand VARCHAR(1024),
-	grossPrice DECIMAL(10,2) not null,
-	grossSum DECIMAL(10,2) not null,
-	
-	primary key(id)
-);*/

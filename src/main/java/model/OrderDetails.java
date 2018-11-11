@@ -1,4 +1,4 @@
-package app;
+package model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,8 +11,6 @@ public class OrderDetails {
 	private Long orderDetailsId;
 
 	@NotNull
-	//@ManyToOne(targetEntity = Order.class)
-	//@JoinColumn(name = "id", nullable = false)
 	private Long orderId;
 
 	@NotNull

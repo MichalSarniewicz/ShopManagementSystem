@@ -1,4 +1,4 @@
-package app;
+package model;
 
 import java.sql.Timestamp;
 
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class OrderWithOrderDetailsInfo {
+public class SupplyWithSupplyDetailsInfo {
 
 	@Id
 	private Long id;
@@ -19,11 +19,11 @@ public class OrderWithOrderDetailsInfo {
 	private int quantity;
 
 	
-	public OrderWithOrderDetailsInfo() {
+	public SupplyWithSupplyDetailsInfo() {
 		super();
 	}
 
-	public OrderWithOrderDetailsInfo(Long id, @NotNull Timestamp dateAndTime, @NotNull int quantity) {
+	public SupplyWithSupplyDetailsInfo(Long id, @NotNull Timestamp dateAndTime, @NotNull int quantity) {
 		super();
 		this.id = id;
 		this.dateAndTime = dateAndTime;

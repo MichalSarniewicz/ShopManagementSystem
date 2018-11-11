@@ -8,14 +8,14 @@
 <body>
 
 	<div class="navbar">
-		<a id=link class="active" href="/menu">Menu</a>
+		<a id=link class="active" href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/products">Product list</a> 
-				<a href="/productDetails?id=1">Product details</a>
+				<a href="/products">Product list</a> <a href="/productDetails/1">Product
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -23,19 +23,18 @@
 				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/orders">Order list</a> 
-				<a href="/orderDetails?id=1">Order details</a>
+				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
-		    <button class="dropbtn">
+			<button class="dropbtn">
 				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/supplies">Supply list</a> 
-				<a href="/supplyDetails?id=1">Supply details</a>
-				<a href="/suppliers">Suppliers list</a>
-				<a href="/supplierDetails?id=1">Suppliers details</a>
+				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
+					details</a> <a href="/suppliers">Suppliers list</a> <a
+					href="/supplierDetails/1">Suppliers details</a>
 			</div>
 		</div>
 		<div class="dropdown" id=account>
@@ -44,49 +43,48 @@
 			</button>
 			<div class="dropdown-content" id="dropdown-account">
 				<a href="#">Logged as:
-				<div sec:authorize="isAuthenticated()">
-					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
-			  	</div>
-			  	</a> 
-			  	<a href="/logout">Logout</a>
+					<div sec:authorize="isAuthenticated()">
+						<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+					</div>
+				</a> <a href="/logout">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="content">
-	
-	<a th:href="@{/menu}">Menu </a> > Supplies
 
-	<h1>Supplies:</h1>
+		<a th:href="@{/home}">Home </a> > Supplies
 
-	<div>
-		<table border="1">
-			<tr class="table-top">
-				<th>ID</th>
-				<th>Net sum (PLN)</th>
-				<th>Gross sum (PLN)</th>
-				<th>Date and time</th>
-				<th>Supplier ID</th>
-				<th>Action</th>
-			</tr>
-			<tr th:each="supply : ${supplies}">
+		<h1>Supplies:</h1>
 
-				<td th:utext="${supply.id}">...</td>
-				<td th:utext="${supply.netSum}">...</td>
-				<td th:utext="${supply.grossSum}">...</td>
-				<td th:utext="${#dates.format(supply.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
-				<td th:utext="${supply.supplierId}">...</td>
+		<div>
+			<table border="1">
+				<tr class="table-top">
+					<th>ID</th>
+					<th>Net sum (PLN)</th>
+					<th>Gross sum (PLN)</th>
+					<th>Date</th>
+					<th>Supplier ID</th>
+					<th>Action</th>
+				</tr>
+				<tr th:each="supply : ${supplies}">
 
-				<td>
-					<form action="supplyDetails">
-						<input type="hidden" name="id" th:value="${supply.id}" /> <input
-							type="submit" value="Details>>">
-					</form>
-				</td>
+					<td th:utext="${supply.id}">...</td>
+					<td th:utext="${supply.netSum}">...</td>
+					<td th:utext="${supply.grossSum}">...</td>
+					<td
+						th:utext="${#dates.format(supply.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
+					<td th:utext="${supply.supplierId}">...</td>
 
-			</tr>
-		</table>
-	</div>
+					<td>
+						<form th:action="@{/supplyDetails/}+ ${supply?.id}">
+							<input type="submit" class="button" value="Details >>">
+						</form>
+					</td>
+
+				</tr>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
