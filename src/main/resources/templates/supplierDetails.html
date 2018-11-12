@@ -64,7 +64,7 @@
 			<div th:if="${supplier?.id != 1}">
 				<form id="prev-btn"
 					th:action="@{/supplierDetails/}+ ${supplier?.id - 1}">
-					<input type="submit" value="<< back">
+					<input class = "button" type="submit" value="<< previous">
 				</form>
 			</div>
 
@@ -72,7 +72,7 @@
 			<div th:if="${supplier?.id != maxSupplierId}">
 				<form id="next-btn"
 					th:action="@{/supplierDetails/}+ ${supplier?.id + 1}">
-					<input type="submit" value="next >>">
+					<input class = "button" type="submit" value="next >>">
 				</form>
 			</div>
 

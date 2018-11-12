@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" />
-<title>ProductDetails</title>
+<title>Product details</title>
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
@@ -59,15 +59,13 @@
 			Products </a> > Product details
 
 
-
-
 		<h1>Product details:</h1>
 
 		<span class="nav-buttons"> 
 			<div th:if="${product?.id != 1}">
 				<form id="prev-btn"
 					th:action="@{/productDetails/}+ ${product?.id - 1}">
-					<input type="submit" value="<< back">
+					<input class = "button" type="submit" value="<< previous">
 				</form>
 			</div>
 
@@ -75,7 +73,7 @@
 			<div th:if="${product?.id != maxProductId}">
 				<form id="next-btn"
 					th:action="@{/productDetails/}+ ${product?.id + 1}">
-					<input type="submit" value="next >>">
+					<input class = "button" type="submit" value="next >>">
 				</form>
 			</div>
 
