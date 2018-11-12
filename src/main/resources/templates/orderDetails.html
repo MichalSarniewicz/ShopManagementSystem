@@ -60,19 +60,25 @@
 
 
 		<h1>Order details:</h1>
-		<!-- 
-	<form action="orderDetails">
-		<input type="hidden" name="id"
-			th:value="${#httpServletRequest.getParameter('id')}-1" /> <input
-			type="submit" value="<<back">
-	</form>
 
-	<form action="orderDetails">
-		<input type="hidden" name="id"
-			th:value="${#httpServletRequest.getParameter('id')}+1" /> <input
-			type="submit" value="next>>">
-	</form>
--->
+		<span class="nav-buttons"> 
+			<div th:if="${order?.id != 1}">
+				<form id="prev-btn"
+					th:action="@{/orderDetails/}+ ${order?.id - 1}">
+					<input type="submit" value="<< back">
+				</form>
+			</div>
+
+		<span class="nav-buttons"> 
+			<div th:if="${order?.id != maxOrderId}">
+				<form id="next-btn"
+					th:action="@{/orderDetails/}+ ${order?.id + 1}">
+					<input type="submit" value="next >>">
+				</form>
+			</div>
+
+		</span> <br> <br> <br>
+
 		<div>
 			<table border="1">
 				<tr class="table-top">

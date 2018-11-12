@@ -37,6 +37,8 @@ public class SupplierController {
 
 		model.addAttribute("supplies", supplyRepository.findBySupplierId(idLong));
 
+		model.addAttribute("maxSupplierId", supplierRepository.findMaxId());
+		
 		return "supplierDetails";
 	}
 }

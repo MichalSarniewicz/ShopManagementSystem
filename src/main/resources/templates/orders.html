@@ -72,7 +72,7 @@
 						th:utext="${#dates.format(order.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
 					<td th:utext="${order.grossPrice}">...</td>
 					<td>
-						<form th:action="@{/orderDetails/}+ ${product?.id}">
+						<form th:action="@{/orderDetails/}+ ${order?.id}">
 							<input type="submit" class="button" value="Details >>">
 						</form>
 					</td>

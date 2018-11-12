@@ -42,6 +42,8 @@ public class SupplyController {
 				.findAllProductsBySupplyId(idLong);
 		model.addAttribute("products", suppliesWithProductInfo);
 
+		model.addAttribute("maxSupplyId", supplyRepository.findMaxId());
+		
 		return "supplyDetails";
 	}
 	

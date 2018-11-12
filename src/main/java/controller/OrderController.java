@@ -23,7 +23,15 @@ public class OrderController {
 
 	@Autowired
 	private ProductWithOrderInfoRepository productWithOrderInfoRepository;
+	
+	@RequestMapping(value = { "/orders" }, method = RequestMethod.GET)
+	public String ordersGet(Model model) {
 
+		model.addAttribute("orders", orderRepository.findAll());
+
+		return "orders";
+	}
+	
 	@RequestMapping(value = { "/orderDetails/{id}" }, method = RequestMethod.GET)
 	public String orderDetailsGet(Model model, @PathVariable String id) {
 
@@ -34,14 +42,8 @@ public class OrderController {
 				.findAllProductsByOrderId(idLong);
 		model.addAttribute("products", productsWithOrderInfo);
 
+		model.addAttribute("maxOrderId", orderRepository.findMaxId());
+		
 		return "orderDetails";
-	}
-
-	@RequestMapping(value = { "/orders" }, method = RequestMethod.GET)
-	public String ordersGet(Model model) {
-
-		model.addAttribute("orders", orderRepository.findAll());
-
-		return "orders";
 	}
 }

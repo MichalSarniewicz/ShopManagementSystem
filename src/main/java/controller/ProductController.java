@@ -50,6 +50,8 @@ public class ProductController {
 		
 		List<SupplyWithSupplyDetailsInfo> supplyWithSupplyDetailsInfo = supplyWithSupplyDetailsInfoRepository.findAllSuppliesByProductId(idLong);
 		model.addAttribute("supplies", supplyWithSupplyDetailsInfo);
+		
+		model.addAttribute("maxProductId", productRepository.findMaxId());
 
 		return "productDetails";
 	}
