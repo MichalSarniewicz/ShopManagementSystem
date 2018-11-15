@@ -8,6 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create products.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class Product {
 
@@ -43,6 +49,20 @@ public class Product {
 	@NotNull
 	private String unit;
 
+	/**
+	 * The contructor of the product with all parameters
+	 * 
+	 * @param name
+	 * @param brand
+	 * @param quantity
+	 * @param category
+	 * @param netPrice
+	 * @param grossPrice
+	 * @param taxRate
+	 * @param quantityInWarehouse
+	 * @param quantityInStore
+	 * @param unit
+	 */
 	public Product(@NotNull String name, String brand, @NotNull int quantity, String category,
 			@NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull int taxRate,
 			@NotNull int quantityInWarehouse, @NotNull int quantityInStore, @NotNull String unit) {
@@ -59,6 +79,9 @@ public class Product {
 		this.unit = unit;
 	}
 
+	/**
+	 * Empty contructor of the Product
+	 */
 	public Product() {
 		super();
 	}

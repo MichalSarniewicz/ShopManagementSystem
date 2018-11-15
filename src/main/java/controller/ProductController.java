@@ -16,6 +16,12 @@ import repository.OrderWithOrderDetailsInfoRepository;
 import repository.ProductRepository;
 import repository.SupplyWithSupplyDetailsInfoRepository;
 
+/**
+ * This class is a controller for "products" and "productDetails" pages.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @EnableAutoConfiguration
 @Controller
 public class ProductController {
@@ -29,7 +35,13 @@ public class ProductController {
 	@Autowired
 	private SupplyWithSupplyDetailsInfoRepository supplyWithSupplyDetailsInfoRepository;
 
-	
+	/**
+	 * This is a request mapping get method for "products" page.
+	 * The method retrieves all products from the repository and adds to the model.
+	 * 
+	 * @param model
+	 * @return "/products"
+	 */
 	@RequestMapping(value = { "/products" }, method = RequestMethod.GET)
 	public String productsGet(Model model) {
 
@@ -37,7 +49,16 @@ public class ProductController {
 
 		return "products";
 	}
-
+	
+	/**
+	 * This is a request mapping get method for "productDetails" page.
+	 * The method retrieves from the repository: details of one product, related orders, supplies 
+	 * with more info and adds to the model.
+	 * 
+	 * @param model
+	 * @param id
+	 * @return "/products"
+	 */
 	@RequestMapping(value = { "/productDetails/{id}" }, method = RequestMethod.GET)
 	public String productDetailsGet(Model model, @PathVariable String id) {
 
@@ -51,6 +72,7 @@ public class ProductController {
 		List<SupplyWithSupplyDetailsInfo> supplyWithSupplyDetailsInfo = supplyWithSupplyDetailsInfoRepository.findAllSuppliesByProductId(idLong);
 		model.addAttribute("supplies", supplyWithSupplyDetailsInfo);
 		
+		//it helps to show 'next' button, only when next product exists
 		model.addAttribute("maxProductId", productRepository.findMaxId());
 
 		return "productDetails";

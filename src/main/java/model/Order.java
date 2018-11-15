@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create orders.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 @Table(name = "Orders")
 public class Order {
@@ -32,9 +38,22 @@ public class Order {
 	@NotNull
 	private int cashdeskId;
 
+	/**
+	 * Empty constructor.
+	 */
 	protected Order() {
 	}
 	
+	/**
+	 * Costructor with all parameters.
+	 * 
+	 * @param id
+	 * @param netPrice
+	 * @param grossPrice
+	 * @param dateAndTime
+	 * @param employeeId
+	 * @param cashdeskId
+	 */
 	public Order(Long id, @NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull Timestamp dateAndTime,
 			@NotNull int employeeId, @NotNull int cashdeskId) {
 		super();

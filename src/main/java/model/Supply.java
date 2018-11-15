@@ -8,6 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create supplies.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class Supply {
 	
@@ -27,9 +33,21 @@ public class Supply {
 	@NotNull
 	private Long supplierId;
 
+	/**
+	 * Empty contructor.
+	 */
 	public Supply() {
 	}
 	
+	/**
+	 * Cosntructor with all parameters.
+	 * 
+	 * @param id
+	 * @param netSum
+	 * @param grossSum
+	 * @param dateAndTime
+	 * @param supplierId
+	 */
 	public Supply(Long id, @NotNull BigDecimal netSum, @NotNull BigDecimal grossSum, @NotNull Timestamp dateAndTime, Long supplierId) {
 		super();
 		this.id = id;

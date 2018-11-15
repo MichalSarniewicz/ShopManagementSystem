@@ -8,6 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create objects of the supplies with more details.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
+
 @Entity
 public class SupplyDetails {
 
@@ -26,9 +33,20 @@ public class SupplyDetails {
 	@NotNull
 	private int quantity;
 
+	/**
+	 * Empty constructor.
+	 */
 	public SupplyDetails() {
 	}
 	
+	/**
+	 * Contructor with all parameters.
+	 * 
+	 * @param supplyDetailsId
+	 * @param supplyId
+	 * @param productId
+	 * @param quantity
+	 */
 	public SupplyDetails(Long supplyDetailsId, @NotNull Long supplyId, @NotNull Long productId, @NotNull int quantity) {
 		super();
 		this.supplyDetailsId = supplyDetailsId;

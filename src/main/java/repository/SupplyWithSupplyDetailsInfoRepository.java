@@ -8,8 +8,18 @@ import org.springframework.data.repository.query.Param;
 
 import model.SupplyWithSupplyDetailsInfo;
 
+/**
+ * This interface creates a repository with crud operations for objects
+ * SupplyWithSupplyDetailsInfo. We need this repository to execute 
+ * query which uses many tables and passes it to one object.
+ * Interface extends CrudRepository.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 public interface SupplyWithSupplyDetailsInfoRepository extends CrudRepository<SupplyWithSupplyDetailsInfo, Long> {
 
+	//this query uses product id to find connected supplies
 	@Query( value = "SELECT t2.id, t2.dateAndTime, t1.quantity FROM " + 
 			"(SELECT * FROM supplyDetails " + 
 			"WHERE  productId = ?#{[0]}) AS t1 " + 

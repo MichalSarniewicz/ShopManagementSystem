@@ -6,6 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create SupplyWithSupplyDetailsInfo objects.
+ * These objects are used to pass the results of queries from repository
+ * to the template.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class SupplyWithSupplyDetailsInfo {
 
@@ -18,11 +26,19 @@ public class SupplyWithSupplyDetailsInfo {
 	@NotNull
 	private int quantity;
 
-	
+	/**
+	 * Empty contructor.
+	 */
 	public SupplyWithSupplyDetailsInfo() {
 		super();
 	}
 
+	/**
+	 * Constructor with all parameters.
+	 * @param id
+	 * @param dateAndTime
+	 * @param quantity
+	 */
 	public SupplyWithSupplyDetailsInfo(Long id, @NotNull Timestamp dateAndTime, @NotNull int quantity) {
 		super();
 		this.id = id;

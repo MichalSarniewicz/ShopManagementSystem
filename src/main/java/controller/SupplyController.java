@@ -14,6 +14,12 @@ import model.SupplyWithProductInfo;
 import repository.SupplyRepository;
 import repository.SupplyWithProductInfoRepository;
 
+/**
+ * This class is a controller for "supply" and "supplyDetails" pages.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @EnableAutoConfiguration
 @Controller
 public class SupplyController {
@@ -24,6 +30,13 @@ public class SupplyController {
 	@Autowired
 	private SupplyWithProductInfoRepository supplyWithProductInfoRepository;
 	
+	/**
+	 * This is a request mapping get method for "supplies" page.
+	 * The method retrieves all supplies from the repository and adds to the model.
+	 * 
+	 * @param model
+	 * @return "/supplies"
+	 */
 	@RequestMapping(value = { "/supplies" }, method = RequestMethod.GET)
 	public String suppliesGet(Model model) {
 
@@ -32,6 +45,15 @@ public class SupplyController {
 		return "supplies";
 	}	
 	
+	/**
+	 * This is a request mapping get method for "supplyDetails" page.
+	 * The method retrieves from the repository: details of one supply and supplied products
+	 * and adds to the model.
+	 * 
+	 * @param model
+	 * @param id
+	 * @return "/supplyrDetails"
+	 */
 	@RequestMapping(value = { "/supplyDetails/{id}" }, method = RequestMethod.GET)
 	public String supplyDetailsGet(Model model, @PathVariable String id) {
 
@@ -42,6 +64,7 @@ public class SupplyController {
 				.findAllProductsBySupplyId(idLong);
 		model.addAttribute("products", suppliesWithProductInfo);
 
+		//it helps to show 'next' button, only when next supply exists
 		model.addAttribute("maxSupplyId", supplyRepository.findMaxId());
 		
 		return "supplyDetails";

@@ -3,6 +3,12 @@ package model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create objects of the order with more details.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class OrderDetails {
 
@@ -21,9 +27,20 @@ public class OrderDetails {
 	@NotNull
 	private int quantity;
 
+	/**
+	 * Empty contructor.
+	 */
 	public OrderDetails() {
 	}
 	
+	/**
+	 * Constructor with all parameters.
+	 * 
+	 * @param orderDetailsId
+	 * @param orderId
+	 * @param productId
+	 * @param quantity
+	 */
 	public OrderDetails(Long orderDetailsId, @NotNull Long orderId, @NotNull Long productId, @NotNull int quantity) {
 		super();
 		this.orderDetailsId = orderDetailsId;

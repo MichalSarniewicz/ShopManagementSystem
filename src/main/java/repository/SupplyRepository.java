@@ -7,11 +7,19 @@ import org.springframework.data.repository.CrudRepository;
 
 import model.Supply;
 
+/**
+ * This interface creates a repository with crud operations for supplies.
+ * Interface extends CrudRepository.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 public interface SupplyRepository extends CrudRepository<Supply, Long> {
 
 	List<Supply> findBySupplierId(Long id);
 	List<Supply> findAll();
 	
+	//this query is used to find quantity of supplies
 	@Query( value = "SELECT max(id) FROM supply; ", 
 			  nativeQuery = true)
 	Integer findMaxId();

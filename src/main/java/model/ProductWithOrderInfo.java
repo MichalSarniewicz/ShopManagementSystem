@@ -6,6 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create ProductWithOrderInfo objects.
+ * These objects are used to pass the results of queries from repository
+ * to the template.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class ProductWithOrderInfo {
 
@@ -26,10 +34,24 @@ public class ProductWithOrderInfo {
 	@NotNull
 	private BigDecimal grossSum;
 	
+
+	/**
+	 * Empty contructor.
+	 */
 	public ProductWithOrderInfo() {
 		super();
 	}
 
+	/**
+	 *  The contructor with all parameters.
+	 *  
+	 * @param id
+	 * @param brand
+	 * @param name
+	 * @param grossPrice
+	 * @param quantity
+	 * @param grossSum
+	 */
 	public ProductWithOrderInfo(Long id, String brand, @NotNull String name, @NotNull BigDecimal grossPrice,
 			@NotNull int quantity, @NotNull BigDecimal grossSum) {
 		super();

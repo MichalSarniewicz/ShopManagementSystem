@@ -13,15 +13,19 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
-
-
-
+/**
+ * This is a security config class, this class determines who is the user, what password and permissions he has.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- 	
+ 	/**
+ 	 * This class sets users and passwords
+ 	 * @param auth
+ 	 */
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
       throws Exception {
@@ -39,6 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .roles("USER");
     }
     
+    /**
+     * This class sets which parts of the system are secured and how.
+     * @param http
+     */
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
@@ -67,10 +75,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
     
+    /**
+     * This class is required to prevent spring boot auto-configuration
+     * @exception
+     */
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        // ALTHOUGH THIS SEEMS LIKE USELESS CODE,
-        // IT'S REQUIRED TO PREVENT SPRING BOOT AUTO-CONFIGURATION
         return super.authenticationManagerBean();
     }
 }

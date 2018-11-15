@@ -6,6 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * This class is used to create suppliers.
+ * 
+ * @author Michał Sarniewicz
+ *
+ */
 @Entity
 public class Supplier {
 	
@@ -27,6 +33,16 @@ public class Supplier {
 	@NotNull
 	private String email;
 
+	/**
+	 * The contructor of the supplier with all parameters.
+	 * 
+	 * @param id
+	 * @param name
+	 * @param adress
+	 * @param comment
+	 * @param phoneNumber
+	 * @param email
+	 */
 	public Supplier(Long id, @NotNull String name, @NotNull String adress, String comment, @NotNull long phoneNumber,
 			@NotNull String email) {
 		super();
@@ -38,6 +54,9 @@ public class Supplier {
 		this.email = email;
 	}
 
+	/**
+	 * Empty contructor.
+	 */
 	public Supplier() {
 		super();
 	}
