@@ -9,8 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>SpringBoot</name>
-	<description>Spring Boot and Thymeleaf</description>
+	<name>ShopManagementSystem</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -72,6 +71,12 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
 
+
+	    <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -83,4 +88,5 @@
 		</plugins>
 	</build>
 
+	<description>Spring Boot appliction</description>
 </project>
