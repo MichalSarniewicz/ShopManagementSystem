@@ -47,17 +47,15 @@ public class Order {
 	/**
 	 * Costructor with all parameters.
 	 * 
-	 * @param id
 	 * @param netPrice
 	 * @param grossPrice
 	 * @param dateAndTime
 	 * @param employeeId
 	 * @param cashdeskId
 	 */
-	public Order(Long id, @NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull Timestamp dateAndTime,
+	public Order(@NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull Timestamp dateAndTime,
 			@NotNull int employeeId, @NotNull int cashdeskId) {
 		super();
-		this.id = id;
 		this.netPrice = netPrice;
 		this.grossPrice = grossPrice;
 		this.dateAndTime = dateAndTime;

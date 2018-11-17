@@ -31,7 +31,7 @@ public class Supply {
 	private Timestamp dateAndTime;
 
 	@NotNull
-	private Long supplierId;
+	private long supplierId;
 
 	/**
 	 * Empty contructor.
@@ -41,16 +41,14 @@ public class Supply {
 	
 	/**
 	 * Cosntructor with all parameters.
-	 * 
-	 * @param id
+	 *
 	 * @param netSum
 	 * @param grossSum
 	 * @param dateAndTime
 	 * @param supplierId
 	 */
-	public Supply(Long id, @NotNull BigDecimal netSum, @NotNull BigDecimal grossSum, @NotNull Timestamp dateAndTime, Long supplierId) {
+	public Supply(@NotNull BigDecimal netSum, @NotNull BigDecimal grossSum, @NotNull Timestamp dateAndTime, Long supplierId) {
 		super();
-		this.id = id;
 		this.netSum = netSum;
 		this.grossSum = grossSum;
 		this.dateAndTime = dateAndTime;

@@ -43,10 +43,9 @@ public class Supplier {
 	 * @param phoneNumber
 	 * @param email
 	 */
-	public Supplier(Long id, @NotNull String name, @NotNull String adress, String comment, @NotNull long phoneNumber,
+	public Supplier(@NotNull String name, @NotNull String adress, String comment, @NotNull long phoneNumber,
 			@NotNull String email) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.adress = adress;
 		this.comment = comment;

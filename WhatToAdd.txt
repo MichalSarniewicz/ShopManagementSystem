@@ -1,7 +1,7 @@
 new home page
 error page
 filters
-password to database?
-css, tables
+css
 admin version
 contact admin button fix
+more tests
