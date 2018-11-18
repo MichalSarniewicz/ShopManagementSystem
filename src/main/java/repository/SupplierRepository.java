@@ -17,9 +17,12 @@ import model.Supplier;
 public interface SupplierRepository extends CrudRepository<Supplier, Long> {
 
 	List<Supplier> findAll();
+	List<Supplier> findByName(String name);
 	
 	//query is used to find a quntity of suppliers
 	@Query( value = "SELECT max(id) FROM supplier; ", 
 			  nativeQuery = true)
 	Integer findMaxId();
+
+	
 }

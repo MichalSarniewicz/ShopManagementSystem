@@ -1,5 +1,6 @@
 package repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -20,8 +21,10 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
 	List<Order> findAll();
 
-	//this query is used to find quantity of orders.
-	@Query( value = "SELECT max(id) FROM orders; ", 
-			  nativeQuery = true)
+	List<Order> findByNetPrice(BigDecimal netPrice);
+
+	// this query is used to find quantity of orders.
+	@Query(value = "SELECT max(id) FROM orders; ", nativeQuery = true)
 	Integer findMaxId();
+
 }
