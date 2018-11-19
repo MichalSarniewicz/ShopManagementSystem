@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import model.Supplier;
 
@@ -14,6 +15,7 @@ import model.Supplier;
  * @author Michał Sarniewicz
  *
  */
+@Repository
 public interface SupplierRepository extends CrudRepository<Supplier, Long> {
 
 	List<Supplier> findAll();

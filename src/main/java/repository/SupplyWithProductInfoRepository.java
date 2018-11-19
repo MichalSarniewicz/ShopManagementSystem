@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import model.SupplyWithProductInfo;
 
@@ -17,6 +18,7 @@ import model.SupplyWithProductInfo;
  * @author Michał Sarniewicz
  *
  */
+@Repository
 public interface SupplyWithProductInfoRepository extends CrudRepository<SupplyWithProductInfo, Long> {
 
 	//this query uses product id to find connected supplies

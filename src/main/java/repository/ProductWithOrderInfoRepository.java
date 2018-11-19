@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import model.ProductWithOrderInfo;
 
@@ -17,6 +18,7 @@ import model.ProductWithOrderInfo;
  * @author Michał Sarniewicz
  *
  */
+@Repository
 public interface ProductWithOrderInfoRepository extends CrudRepository<ProductWithOrderInfo, Long> {
 
 	//this query uses order id to find connected products

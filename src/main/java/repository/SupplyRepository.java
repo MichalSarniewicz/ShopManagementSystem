@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import model.Supply;
 
@@ -15,6 +16,7 @@ import model.Supply;
  * @author Michał Sarniewicz
  *
  */
+@Repository
 public interface SupplyRepository extends CrudRepository<Supply, Long> {
 
 	List<Supply> findBySupplierId(Long id);
