@@ -53,7 +53,7 @@ public class Order {
 	 * @param employeeId
 	 * @param cashdeskId
 	 */
-	public Order(@NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull Timestamp dateAndTime,
+	public Order( @NotNull BigDecimal netPrice, @NotNull BigDecimal grossPrice, @NotNull Timestamp dateAndTime,
 			@NotNull int employeeId, @NotNull int cashdeskId) {
 		super();
 		this.netPrice = netPrice;

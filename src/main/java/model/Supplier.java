@@ -36,14 +36,13 @@ public class Supplier {
 	/**
 	 * The contructor of the supplier with all parameters.
 	 * 
-	 * @param id
 	 * @param name
 	 * @param adress
 	 * @param comment
 	 * @param phoneNumber
 	 * @param email
 	 */
-	public Supplier(@NotNull String name, @NotNull String adress, String comment, @NotNull long phoneNumber,
+	public Supplier( @NotNull String name, @NotNull String adress, String comment, @NotNull long phoneNumber,
 			@NotNull String email) {
 		super();
 		this.name = name;

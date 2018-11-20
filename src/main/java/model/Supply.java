@@ -31,7 +31,7 @@ public class Supply {
 	private Timestamp dateAndTime;
 
 	@NotNull
-	private long supplierId;
+	private Long supplierId;
 
 	/**
 	 * Empty contructor.
@@ -41,7 +41,7 @@ public class Supply {
 	
 	/**
 	 * Cosntructor with all parameters.
-	 *
+	 * 
 	 * @param netSum
 	 * @param grossSum
 	 * @param dateAndTime

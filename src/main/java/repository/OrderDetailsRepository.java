@@ -3,7 +3,6 @@ package repository;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import model.OrderDetails;
 
@@ -14,7 +13,6 @@ import model.OrderDetails;
  * @author Michał Sarniewicz
  *
  */
-@Repository
 public interface OrderDetailsRepository extends CrudRepository<OrderDetails, Long> {
 
 	List<OrderDetails> findByProductId(Long id);
