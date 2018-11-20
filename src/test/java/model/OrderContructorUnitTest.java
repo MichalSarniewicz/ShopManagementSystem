@@ -1,4 +1,4 @@
-package tests;
+package model;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,14 +6,16 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import app.ShopManagementSystemApplication;
 import model.Order;
 
+@ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { ShopManagementSystemApplication.class })
+@DataJpaTest
 public class OrderContructorUnitTest {
 
 	@Test

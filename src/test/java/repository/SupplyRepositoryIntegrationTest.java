@@ -1,4 +1,4 @@
-package tests;
+package repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,40 +10,40 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import app.ShopManagementSystemApplication;
-import model.Order;
-import repository.OrderRepository;
+import model.Supply;
+import repository.SupplyRepository;
 
-@SpringBootTest(classes = { ShopManagementSystemApplication.class })
+@ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class OrderRepositoryIntegrationTest {
+public class SupplyRepositoryIntegrationTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 
 	@Autowired
-	private OrderRepository orderRepository;
+	private SupplyRepository supplyRepository;
 
 	@Test
-	public void whenFindByNetPrice_thenReturnOrder() {
+	public void whenFindByNetPrice_thenReturnSupply() {
 
 		// given
-		BigDecimal netPrice = new BigDecimal("2113.01");
-		BigDecimal grossPrice = new BigDecimal("2599.00");
+		BigDecimal netSum = new BigDecimal("2113.01");
+		BigDecimal grossSum = new BigDecimal("2599.00");
 		java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
 
-		Order order = new Order(netPrice, grossPrice, timestamp, 1, 1);
-		entityManager.persist(order);
+		Supply supply = new Supply(netSum, grossSum, timestamp, (long) 1);
+		entityManager.persist(supply);
 		entityManager.flush();
 
 		// when
-		List<Order> found = orderRepository.findByNetPrice(order.getNetPrice());
+		List<Supply> found = supplyRepository.findByNetSum(supply.getNetSum());
 
 		// then
-		assertThat(found.get(0).getNetPrice()).isEqualTo(order.getNetPrice());
+		assertThat(found.get(0).getNetSum()).isEqualTo(supply.getNetSum());
 	}
 }
