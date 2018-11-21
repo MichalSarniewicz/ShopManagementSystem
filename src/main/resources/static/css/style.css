@@ -300,3 +300,28 @@ icon {
     box-shadow: 2px 2px 4px #d3d7cf;
 	
 }
+
+.error-page {
+  width: 550px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.error-place {
+  position: relative;
+  width: 450px;
+  height: 250px;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 460px;
+  margin: auto auto auto;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+  .error-place .text {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
