@@ -30,32 +30,44 @@ table th, table td {
 tr:hover {
 	background-color: #f5f5f5;
 }
-
+.h1-left{
+	text-align: left;
+	margin-left: 350px;
+	
+}
 .table-top {
 	background-color: #f5f5f5;
 }
 
-icon {
+.icon {
 	display: block;
 	width: "350";
 	height: "350";
+	padding: 15px;
+	margin: 15px;
+}
+.icon-box {
+
+	padding: 15px;
+	margin: 15px;
 }
 
 #menu {
-	display: inline-block; position : relative;
+	display: inline-block; 
+	position : relative;
 	padding: 15px;
 	text-align: center;
 	table-layout: auto;
 	margin: auto;
-	margin-top: 100px; width : 580px;
-	top: 50px;
+	margin-top: 100px;
+	margin-left: 0px;
 	display: flex;
 	flex-direction: row;
-	width: 580px;
 	position: relative;
+	font-size: 30px;
 }
 
-icon:hover {
+.icon-box:hover {
 	background-color: #f5f5f5;
 }
 
@@ -299,8 +311,12 @@ icon:hover {
 }
 
 .nav-buttons {
-	float: left;
+	/*float: left;*/
 	display: inline-block;
+		display: flex;
+	flex-direction: row;
+	position: relative;
+	table-layout: auto;
 }
 
 #prev-btn {
@@ -309,10 +325,23 @@ icon:hover {
 }
 
 #next-btn {
+	
 	float: right;
 	font-size: 18px;
-	margin-left: 1000px;
+	margin: auto;
+	margin-left: 800px;
+	
 }
+/*	
+	position : relative;
+	padding: 15px;
+	text-align: center;
+	table-layout: auto;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	font-size: 30px;
+}*/
 
 .button {
 	background-color: #f5f5f5;

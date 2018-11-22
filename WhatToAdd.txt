@@ -1,6 +1,0 @@
-new home page
-filters fix
-security fix
-css main style changes
-more integration tests
-admin version: accounts management, 

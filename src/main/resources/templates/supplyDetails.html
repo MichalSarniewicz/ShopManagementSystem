@@ -58,7 +58,7 @@
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/supplies}">
 			Supplies </a> > Supply details
 
-		<h1>Supply details</h1>
+		<h1 class="h1-left">Supply details</h1>
 		</br></br></br>
 
 		<span class="nav-buttons"> 
@@ -69,7 +69,6 @@
 				</form>
 			</div>
 
-		<span class="nav-buttons"> 
 			<div th:if="${supply?.id != maxSupplyId}">
 				<form id="next-btn"
 					th:action="@{/supplyDetails/}+ ${supply?.id + 1}">
@@ -77,7 +76,7 @@
 				</form>
 			</div>
 
-		</span> <br> <br> <br>
+		</span> </br> 
 
 
 		<div>
