@@ -51,8 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        .antMatchers("/", "/home").permitAll()
-            .anyRequest().authenticated() 
+    	.antMatchers("/css/**", "/h2_console/**")
+    		.permitAll()
+    		.anyRequest().authenticated() 
             .and()
           .formLogin()
             .loginPage("/login")
@@ -64,13 +65,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             .permitAll()
         .and()
-        	.httpBasic()
-        .and()
-        .authorizeRequests()
-        	.antMatchers("/css/**", "/js/**", "/images/**", "/h2_console/**", "/h2_console/**")
-        	.permitAll()
-        	.anyRequest()
-        	.permitAll();
+        	.httpBasic();
+       
         http.csrf().disable();
         http.headers().frameOptions().disable();
     }
@@ -84,3 +80,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 }
+
+/*
+http
+.authorizeRequests()
+.antMatchers("/", "/home").permitAll()
+    .anyRequest().authenticated() 
+    .and()
+  .formLogin()
+    .loginPage("/login")
+    .permitAll()
+    .failureUrl("/login?message=error")
+  .and()
+    .logout()
+    .logoutSuccessUrl("/login?message=logout")
+    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+    .permitAll()
+.and()
+	.httpBasic()
+.and()
+.authorizeRequests()
+	.antMatchers("/css/**", "/js/**", "/images/**", "/h2_console/**")
+	.permitAll()
+	.anyRequest()
+	.permitAll();
+http.csrf().disable();
+http.headers().frameOptions().disable();
+*/
