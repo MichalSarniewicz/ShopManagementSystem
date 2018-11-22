@@ -10,7 +10,7 @@
 <body>
 
 	<div class="navbar">
-		<a id=link class="active" href="/home">Home</a>
+		<a id=link href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
@@ -58,7 +58,8 @@
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/supplies}">
 			Supplies </a> > Supply details
 
-		<h1>Supply details:</h1>
+		<h1>Supply details</h1>
+		</br></br></br>
 
 		<span class="nav-buttons"> 
 			<div th:if="${supply?.id != 1}">

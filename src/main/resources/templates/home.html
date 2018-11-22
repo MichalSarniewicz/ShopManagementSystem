@@ -16,8 +16,8 @@
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/products">Product list</a> 
-				<a href="/productDetails/1">Product details</a>
+				<a href="/products">Product list</a> <a href="/productDetails/1">Product
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -25,19 +25,18 @@
 				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/orders">Order list</a> 
-				<a href="/orderDetails/1">Order details</a>
+				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
+					details</a>
 			</div>
 		</div>
 		<div class="dropdown">
-		    <button class="dropbtn">
+			<button class="dropbtn">
 				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="/supplies">Supply list</a> 
-				<a href="/supplyDetails/1">Supply details</a>
-				<a href="/suppliers">Suppliers list</a>
-				<a href="/supplierDetails/1">Suppliers details</a>
+				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
+					details</a> <a href="/suppliers">Suppliers list</a> <a
+					href="/supplierDetails/1">Suppliers details</a>
 			</div>
 		</div>
 		<div class="dropdown" id=account>
@@ -46,38 +45,38 @@
 			</button>
 			<div class="dropdown-content" id="dropdown-account">
 				<a href="#">Logged as:
-				<div sec:authorize="isAuthenticated()">
-					<span th:text="${#authentication.getPrincipal().getUsername()}"></span> 
-			  	</div>
-			  	</a> 
-			  	<a href="/logout">Logout</a>
+					<div sec:authorize="isAuthenticated()">
+						<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+					</div>
+				</a> <a href="/logout">Logout</a>
 			</div>
 		</div>
 	</div>
 
+	<h1>Menu</h1>
 
+	<div id="menu">
 
-	<!--  <h1>Menu</h1> -->
-
-	<table id="menu">
-		<tr>
-			<th><a id='icon' th:href="@{/products}"> <img border="0"
-					alt="products" th:src="@{'/images/product.png'}">
-			</a> </br> <a href="/products">Products</a></th>
-
-			<th><a id='icon' th:href="@{/orders}"><img border="0"
-					alt="orders" th:src="@{'/images/transaction.png'}"> </a> </br> <a
-				href="/orders">Orders</a></th>
-			<th><a id='icon' th:href="@{/supplies}"><img border="0"
-					alt="supplies" th:src="@{'/images/supply.png'}"> </a> </br> <a
-				href="/supplies">Supplies</a></th>
-		</tr>
-		<tr>
-
-			<th><a id='icon' th:href="@{/suppliers}"><img border="0"
-					alt="suppliers" th:src="@{'/images/supplier.png'}"> </a> </br> <a
-				href="/suppliers">Suppliers</a></th>
-		</tr>
+		<div class="icon-box">
+			<a id='icon' th:href="@{/products}"> <img border="0"
+				alt="products" th:src="@{'/images/product.png'}">
+			</a> </br> <a href="/products">Products</a>
+		</div>
+		<div class="icon-box">
+			<a id='icon' th:href="@{/orders}"><img border="0" alt="orders"
+				th:src="@{'/images/transaction.png'}"> </a> </br> <a href="/orders">Orders</a>
+		</div>
+		<div class="icon-box">
+			<a id='icon' th:href="@{/supplies}"><img border="0"
+				alt="supplies" th:src="@{'/images/supply.png'}"> </a> </br> <a
+				href="/supplies">Supplies</a>
+		</div>
+		<div class="icon-box">
+			<a id='icon' th:href="@{/suppliers}"><img border="0"
+				alt="suppliers" th:src="@{'/images/supplier.png'}"> </a> </br> <a
+				href="/suppliers">Suppliers</a>
+		</div>
+	</div>
 </body>
 
 </html>

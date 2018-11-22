@@ -10,7 +10,7 @@
 <body>
 
 	<div class="navbar">
-		<a id=link class="active" href="/home">Home</a>
+		<a id=link href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
@@ -22,7 +22,7 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
@@ -59,8 +59,8 @@
 		> Order details
 
 
-		<h1>Order details:</h1>
-
+		<h1>Order details</h1>
+</br> </br>
 		<span class="nav-buttons"> 
 			<div th:if="${order?.id != 1}">
 				<form id="prev-btn"

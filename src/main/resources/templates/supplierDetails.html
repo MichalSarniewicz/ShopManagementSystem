@@ -10,7 +10,7 @@
 <body>
 
 	<div class="navbar">
-		<a id=link class="active" href="/home">Home</a>
+		<a id=link href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				<a href="/products">Products</a> <i class="fa fa-caret-down"></i>
@@ -31,7 +31,8 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/supplies">Supplies</a> <i
+					class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
@@ -58,79 +59,77 @@
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/suppliers}">
 			Suppliers </a> > Supplier details
 
-		<h1>Supplier details:</h1>
-
-		<span class="nav-buttons"> 
+		<h1>Supplier details</h1>
+		</br>
+		</br>
+		</br>
+		 <span class="nav-buttons">
 			<div th:if="${supplier?.id != 1}">
 				<form id="prev-btn"
 					th:action="@{/supplierDetails/}+ ${supplier?.id - 1}">
-					<input class = "button" type="submit" value="<< previous">
+					<input class="button" type="submit" value="<< previous">
 				</form>
-			</div>
-
-		<span class="nav-buttons"> 
-			<div th:if="${supplier?.id != maxSupplierId}">
-				<form id="next-btn"
-					th:action="@{/supplierDetails/}+ ${supplier?.id + 1}">
-					<input class = "button" type="submit" value="next >>">
-				</form>
-			</div>
+			</div> <span class="nav-buttons">
+				<div th:if="${supplier?.id != maxSupplierId}">
+					<form id="next-btn"
+						th:action="@{/supplierDetails/}+ ${supplier?.id + 1}">
+						<input class="button" type="submit" value="next >>">
+					</form>
+				</div>
 
 		</span> <br> <br> <br>
 
 
-		<div>
-			<table border="1">
-				<tr class="table-top">
-					<th>ID</th>
-					<th>Name</th>
-					<th>Adress</th>
-					<th>Phone number</th> 
-					<th>E-mail</th> 
-					<th>Comment</th>
+			<div>
+				<table border="1">
+					<tr class="table-top">
+						<th>ID</th>
+						<th>Name</th>
+						<th>Adress</th>
+						<th>Phone number</th> 
+						<th>E-mail</th> 
+						<th>Comment</th>
 
-				</tr>
-				<tr>
-					<td th:utext="${supplier?.id}">...</td>
-					<td th:utext="${supplier?.name}">...</td>
-					<td th:utext="${supplier?.adress}">...</td>
-					<td th:utext="${supplier?.phoneNumber}">...</td>
-					<td th:utext="${supplier?.email}">...</td>
-					<td th:utext="${supplier?.comment}">...</td>
-				</tr>
-			</table>
-		</div>
-
-		<!--  
+					</tr>
+					<tr>
+						<td th:utext="${supplier?.id}">...</td>
+						<td th:utext="${supplier?.name}">...</td>
+						<td th:utext="${supplier?.adress}">...</td>
+						<td th:utext="${supplier?.phoneNumber}">...</td>
+						<td th:utext="${supplier?.email}">...</td>
+						<td th:utext="${supplier?.comment}">...</td>
+					</tr>
+				</table>
+			</div> <!--  
         <form action="productsEdit">
 			<input type="submit" value="EDIT">
 		</form>
 		-->
 
-		<h2>Supplies:</h2>
-		<table border="1">
-			<tr class="table-top">
-				<th>ID</th>
-				<th>Net sum (PLN)</th>
-				<th>Gross sum (PLN)</th>
-				<th>Date and time</th>
-				<th>Action</th>
-			</tr>
-			<tr th:each="supply: ${supplies}">
-				<td th:utext="${supply?.id}">...</td>
-				<td th:utext="${supply?.netSum}">...</td>
-				<td th:utext="${supply?.grossSum}">...</td>
-				<td
-					th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
-				<td>
-					<form th:action="@{/supplyDetails/}+ ${supply?.id}">
-						<input type="submit" class="button" value="Details >>">
-					</form>
-				</td>
+			<h2>Supplies:</h2>
+			<table border="1">
+				<tr class="table-top">
+					<th>ID</th>
+					<th>Net sum (PLN)</th>
+					<th>Gross sum (PLN)</th>
+					<th>Date and time</th>
+					<th>Action</th>
+				</tr>
+				<tr th:each="supply: ${supplies}">
+					<td th:utext="${supply?.id}">...</td>
+					<td th:utext="${supply?.netSum}">...</td>
+					<td th:utext="${supply?.grossSum}">...</td>
+					<td
+						th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
+					<td>
+						<form th:action="@{/supplyDetails/}+ ${supply?.id}">
+							<input type="submit" class="button" value="Details >>">
+						</form>
+					</td>
 
 
-			</tr>
-		</table>
+				</tr>
+			</table>
 	</div>
 </body>
 </html>
