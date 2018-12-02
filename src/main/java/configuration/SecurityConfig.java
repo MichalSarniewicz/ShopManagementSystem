@@ -81,29 +81,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 
-/*
-http
-.authorizeRequests()
-.antMatchers("/", "/home").permitAll()
-    .anyRequest().authenticated() 
-    .and()
-  .formLogin()
-    .loginPage("/login")
-    .permitAll()
-    .failureUrl("/login?message=error")
-  .and()
-    .logout()
-    .logoutSuccessUrl("/login?message=logout")
-    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-    .permitAll()
-.and()
-	.httpBasic()
-.and()
-.authorizeRequests()
-	.antMatchers("/css/**", "/js/**", "/images/**", "/h2_console/**")
-	.permitAll()
-	.anyRequest()
-	.permitAll();
-http.csrf().disable();
-http.headers().frameOptions().disable();
-*/
