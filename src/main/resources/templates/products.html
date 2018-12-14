@@ -106,16 +106,19 @@
 
 		</form>
 
-
 		<script type="text/javascript" th:inline="javascript">
-			if (fromQuantity != null) {
-				document.getElementById('intFromQuantity').innerHTML = parseInt(
-						fromQuantity, 10);
-
-			} else
-				intFromQuantity = 0;
+		
+			const urlParams = new URLSearchParams(window.location.search);
+			var intFromQuantity = parseInt(urlParams.get('fromQuantity'),10);
+			
+			var intToQuantity = parseInt(urlParams.get('toQuantity'),10);
+			
+			var intFromGrossPrice = parseInt(urlParams.get('fromGrossPrice'),10);
+			
+			var intToGrossPrice = parseInt(urlParams.get('toGrossPrice'),10);
+			
 		</script>
-
+      
 		<div>
 			<table border="1">
 				<tr class="table-top">
@@ -150,24 +153,24 @@
 					or ${#strings.containsIgnoreCase(product.brand, #httpServletRequest.getParameter('brand'))}">
 
 									<div
-										th:if="${#httpServletRequest.getParameter('fromQuantity')} == null 
-					or ${#httpServletRequest.getParameter('fromQuantity')} == ''
+										th:if="${#httpServletRequest.getParameter('intFromQuantity')} == null 
+					or ${#httpServletRequest.getParameter('intFromQuantity')} == ''
 					or ${#httpServletRequest.getParameter('intFromQuantity') &lt; product.quantity}">
 
 										<div
-											th:if="${#httpServletRequest.getParameter('toQuantity')} == null 
-					or ${#httpServletRequest.getParameter('toQuantity')} == ''
-					or ${#httpServletRequest.getParameter('toQuantity') &gt; product.quantity}">
+											th:if="${#httpServletRequest.getParameter('intToQuantity')} == null 
+					or ${#httpServletRequest.getParameter('intToQuantity')} == ''
+					or ${#httpServletRequest.getParameter('intToQuantity') &gt; product.quantity}">
 
 											<div
-												th:if="${#httpServletRequest.getParameter('fromGrossPrice')} == null 
-					or ${#httpServletRequest.getParameter('fromGrossPrice')} == ''
-					or ${#httpServletRequest.getParameter('fromGrossPrice') &lt; product.grossPrice}">
+												th:if="${#httpServletRequest.getParameter('intFromGrossPrice')} == null 
+					or ${#httpServletRequest.getParameter('intFromGrossPrice')} == ''
+					or ${#httpServletRequest.getParameter('intFromGrossPrice') &lt; product.grossPrice}">
 
 												<div
-													th:if="${#httpServletRequest.getParameter('toGrossPrice')} == null 
-					or ${#httpServletRequest.getParameter('toGrossPrice')} == ''
-					or ${#httpServletRequest.getParameter('toGrossPrice') &gt; product.grossPrice}">
+													th:if="${#httpServletRequest.getParameter('intToGrossPrice')} == null 
+					or ${#httpServletRequest.getParameter('intToGrossPrice')} == ''
+					or ${#httpServletRequest.getParameter('intToGrossPrice') &gt; product.grossPrice}">
 
 													<td th:utext="${product.id}">...</td>
 													<td th:utext="${product.category}">...</td>
