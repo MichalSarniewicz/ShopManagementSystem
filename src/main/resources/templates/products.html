@@ -18,11 +18,23 @@
 		}
 	</script>
 
+	<script type="text/javascript" th:inline="javascript">
+		const urlParams = new URLSearchParams(window.location.search);
+		var intFromQuantity = parseInt(urlParams.get('fromQuantity'), 10);
+
+		var intToQuantity = parseInt(urlParams.get('toQuantity'), 10);
+
+		var intFromGrossPrice = parseInt(urlParams.get('fromGrossPrice'), 10);
+
+		var intToGrossPrice = parseInt(urlParams.get('toGrossPrice'), 10);
+	</script>
+
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a class="active" href="/products">Products</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/products">Products</a> <i
+					class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/products">Product list</a> <a href="/productDetails/1">Product
@@ -64,14 +76,14 @@
 
 	<div class="content">
 		<a th:href="@{/home}">Home </a> > Products
-		
+
 		<h1 class="h1-left">Products</h1>
-		
+
 		</br> </br> </br> </br>
 		<button class="button" onclick="myFunction()">Filters</button>
 
 		<form class="filters" id="filters">
-	
+
 			<div class="filter">
 				ID:<br> <input type="text" name="id"><br>
 			</div>
@@ -104,87 +116,72 @@
 					type="submit" class="button" value="Submit">
 			</div>
 
-		</form>
+		</form> </br>
+		<table border="1">
+			
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Category</th>
+				<th>Brand</th>
+				<th>Name</th>
+				<th>Quantity</th>
+				<th>Gross Price (PLN)</th> 
+				<th>Actions</th> 
 
-		<script type="text/javascript" th:inline="javascript">
-		
-			const urlParams = new URLSearchParams(window.location.search);
-			var intFromQuantity = parseInt(urlParams.get('fromQuantity'),10);
-			
-			var intToQuantity = parseInt(urlParams.get('toQuantity'),10);
-			
-			var intFromGrossPrice = parseInt(urlParams.get('fromGrossPrice'),10);
-			
-			var intToGrossPrice = parseInt(urlParams.get('toGrossPrice'),10);
-			
-		</script>
-      
-		<div>
-			<table border="1">
-				<tr class="table-top">
-					<th>ID</th>
-					<th>Category</th>
-					<th>Brand</th>
-					<th>Name</th>
-					<th>Quantity</th>
-					<th>Gross Price (PLN)</th> 
-					<th>Actions</th> 
+			</tr>
+			<tr th:each="product : ${products}">
 
-				</tr>
-				<tr th:each="product : ${products}">
-
-					<div
-						th:if="${product.category} == ${#httpServletRequest.getParameter('category')} 
+				<div
+					th:if="${product.category} == ${#httpServletRequest.getParameter('category')} 
 					or ${#httpServletRequest.getParameter('category')} == ''
 					or ${#httpServletRequest.getParameter('category')} == null">
-						<div
-							th:if="${product.id} == ${#httpServletRequest.getParameter('id')} 
+					<div
+						th:if="${product.id} == ${#httpServletRequest.getParameter('id')} 
 					or ${#httpServletRequest.getParameter('id')} == ''
 					or ${#httpServletRequest.getParameter('id')} == null">
 
-							<div
-								th:if="${#httpServletRequest.getParameter('name')} == null 
+						<div
+							th:if="${#httpServletRequest.getParameter('name')} == null 
 					or ${#httpServletRequest.getParameter('name')} == ''
 					or ${#strings.containsIgnoreCase(product.name, #httpServletRequest.getParameter('name'))}">
 
-								<div
-									th:if="${#httpServletRequest.getParameter('brand')} == null 
+							<div
+								th:if="${#httpServletRequest.getParameter('brand')} == null 
 					or ${#httpServletRequest.getParameter('brand')} == ''
 					or ${#strings.containsIgnoreCase(product.brand, #httpServletRequest.getParameter('brand'))}">
 
-									<div
-										th:if="${#httpServletRequest.getParameter('intFromQuantity')} == null 
+								<div
+									th:if="${#httpServletRequest.getParameter('intFromQuantity')} == null 
 					or ${#httpServletRequest.getParameter('intFromQuantity')} == ''
 					or ${#httpServletRequest.getParameter('intFromQuantity') &lt; product.quantity}">
 
-										<div
-											th:if="${#httpServletRequest.getParameter('intToQuantity')} == null 
+									<div
+										th:if="${#httpServletRequest.getParameter('intToQuantity')} == null 
 					or ${#httpServletRequest.getParameter('intToQuantity')} == ''
 					or ${#httpServletRequest.getParameter('intToQuantity') &gt; product.quantity}">
 
-											<div
-												th:if="${#httpServletRequest.getParameter('intFromGrossPrice')} == null 
+										<div
+											th:if="${#httpServletRequest.getParameter('intFromGrossPrice')} == null 
 					or ${#httpServletRequest.getParameter('intFromGrossPrice')} == ''
 					or ${#httpServletRequest.getParameter('intFromGrossPrice') &lt; product.grossPrice}">
 
-												<div
-													th:if="${#httpServletRequest.getParameter('intToGrossPrice')} == null 
+											<div
+												th:if="${#httpServletRequest.getParameter('intToGrossPrice')} == null 
 					or ${#httpServletRequest.getParameter('intToGrossPrice')} == ''
 					or ${#httpServletRequest.getParameter('intToGrossPrice') &gt; product.grossPrice}">
 
-													<td th:utext="${product.id}">...</td>
-													<td th:utext="${product.category}">...</td>
-													<td th:utext="${product.brand}">...</td>
-													<td th:utext="${product.name}">...</td>
-													<td th:utext="${product.quantity}">...</td>
-													<td th:utext="${product.grossPrice}">...</td>
-													<td>
-														<form th:action="@{/productDetails/}+ ${product?.id}">
-															<input type="submit" class="button" value="Details >>">
-														</form>
-													</td>
+												<td th:utext="${product.id}">...</td>
+												<td th:utext="${product.category}">...</td>
+												<td th:utext="${product.brand}">...</td>
+												<td th:utext="${product.name}">...</td>
+												<td th:utext="${product.quantity}">...</td>
+												<td th:utext="${product.grossPrice}">...</td>
+												<td>
+													<form th:action="@{/productDetails/}+ ${product?.id}">
+														<input type="submit" class="button" value="Details >>">
+													</form>
+												</td>
 
-												</div>
 											</div>
 										</div>
 									</div>
@@ -192,9 +189,10 @@
 							</div>
 						</div>
 					</div>
-				</tr>
-			</table>
-		</div>
+				</div>
+			</tr>
+		</table>
+	</div>
 
 	</div>
 </body>
