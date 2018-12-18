@@ -17,6 +17,9 @@ import app.ShopManagementSystemApplication;
 import model.Product;
 import repository.ProductRepository;
 
+/*
+ * Integration test for Product repository
+ */
 @ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest

@@ -173,5 +173,4 @@ public class Product {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-
 }

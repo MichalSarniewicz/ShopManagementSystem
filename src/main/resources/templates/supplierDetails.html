@@ -9,6 +9,7 @@
 </head>
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -54,84 +55,72 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/suppliers}">
 			Suppliers </a> > Supplier details
 
-		<h1 class="h1-left" >Supplier details</h1>
-		
-		</br>
-		</br>
-		</br>
-		 <span class="nav-buttons">
+		<h1 class="h1-left">Supplier details</h1>
+
+		</br> </br> </br> <span class="nav-buttons">
 			<div th:if="${supplier?.id != 1}">
 				<form id="prev-btn"
 					th:action="@{/supplierDetails/}+ ${supplier?.id - 1}">
 					<input class="button" type="submit" value="<< previous">
 				</form>
+			</div> <!--   <span class="nav-buttons">-->
+			<div th:if="${supplier?.id != maxSupplierId}">
+				<form id="next-btn"
+					th:action="@{/supplierDetails/}+ ${supplier?.id + 1}">
+					<input class="button" type="submit" value="next >>">
+				</form>
 			</div>
-			<!--   <span class="nav-buttons">-->
-				<div th:if="${supplier?.id != maxSupplierId}">
-					<form id="next-btn"
-						th:action="@{/supplierDetails/}+ ${supplier?.id + 1}">
-						<input class="button" type="submit" value="next >>">
-					</form>
-				</div>
+		</span> <br>
 
-		</span> <br> 
-
-
-			<div>
-				<table border="1">
-					<tr class="table-top">
-						<th>ID</th>
-						<th>Name</th>
-						<th>Adress</th>
-						<th>Phone number</th> 
-						<th>E-mail</th> 
-						<th>Comment</th>
-
-					</tr>
-					<tr>
-						<td th:utext="${supplier?.id}">...</td>
-						<td th:utext="${supplier?.name}">...</td>
-						<td th:utext="${supplier?.adress}">...</td>
-						<td th:utext="${supplier?.phoneNumber}">...</td>
-						<td th:utext="${supplier?.email}">...</td>
-						<td th:utext="${supplier?.comment}">...</td>
-					</tr>
-				</table>
-			</div> <!--  
-        <form action="productsEdit">
-			<input type="submit" value="EDIT">
-		</form>
-		-->
-
-			<h2>Supplies:</h2>
+		<div>
 			<table border="1">
 				<tr class="table-top">
 					<th>ID</th>
-					<th>Net sum (PLN)</th>
-					<th>Gross sum (PLN)</th>
-					<th>Date and time</th>
-					<th>Action</th>
+					<th>Name</th>
+					<th>Adress</th>
+					<th>Phone number</th> 
+					<th>E-mail</th> 
+					<th>Comment</th>
 				</tr>
-				<tr th:each="supply: ${supplies}">
-					<td th:utext="${supply?.id}">...</td>
-					<td th:utext="${supply?.netSum}">...</td>
-					<td th:utext="${supply?.grossSum}">...</td>
-					<td
-						th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
-					<td>
-						<form th:action="@{/supplyDetails/}+ ${supply?.id}">
-							<input type="submit" class="button" value="Details >>">
-						</form>
-					</td>
-
-
+				<tr>
+					<td th:utext="${supplier?.id}">...</td>
+					<td th:utext="${supplier?.name}">...</td>
+					<td th:utext="${supplier?.adress}">...</td>
+					<td th:utext="${supplier?.phoneNumber}">...</td>
+					<td th:utext="${supplier?.email}">...</td>
+					<td th:utext="${supplier?.comment}">...</td>
 				</tr>
 			</table>
+		</div>
+
+		<h2>Supplies:</h2>
+
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Net sum (PLN)</th>
+				<th>Gross sum (PLN)</th>
+				<th>Date and time</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="supply: ${supplies}">
+				<td th:utext="${supply?.id}">...</td>
+				<td th:utext="${supply?.netSum}">...</td>
+				<td th:utext="${supply?.grossSum}">...</td>
+				<td th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}">...</td>
+				<td>
+					<form th:action="@{/supplyDetails/}+ ${supply?.id}">
+						<input type="submit" class="button" value="Details >>">
+					</form>
+				</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

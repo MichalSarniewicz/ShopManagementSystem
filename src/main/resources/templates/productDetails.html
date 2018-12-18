@@ -7,8 +7,10 @@
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
+
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -54,6 +56,7 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/products}">
@@ -61,101 +64,96 @@
 
 		<h1 class="h1-left">Product details</h1>
 
-		</br> </br> </br>
-		<span class="nav-buttons">
+		</br> </br> </br> <span class="nav-buttons">
 			<div th:if="${product?.id != 1}">
 				<form id="prev-btn"
 					th:action="@{/productDetails/}+ ${product?.id - 1}">
 					<input class="button" type="submit" value="<< previous">
 				</form>
-			</div> 
-				<div th:if="${product?.id != maxProductId}">
-					<form id="next-btn"
-						th:action="@{/productDetails/}+ ${product?.id + 1}">
-						<input class="button" type="submit" value="next >>">
-					</form>
-				</div>
-
-		</span> </br> </br> 
-
-			<div>
-				<table border="1">
-					<tr class="table-top">
-						<th>ID</th>
-						<th>Brand</th>
-						<th>Name</th>
-						<th>Category</th>
-						<th>Quantity</th>
-						<th>Net price(PLN)</th>
-						<th>Gross price (PLN)</th>
-						<th>Tax rate (%)</th>
-						<th>Quantity in warehouse</th>
-						<th>Quantity in store</th>
-						<th>Unit</th>
-					</tr>
-					<tr>
-						<td th:utext="${product?.id}">...</td>
-						<td th:utext="${product?.brand}">...</td>
-						<td th:utext="${product?.name}">...</td>
-						<td th:utext="${product?.category}">...</td>
-						<td th:utext="${product?.quantity}">...</td>
-						<td th:utext="${product?.netPrice}">...</td>
-						<td th:utext="${product?.grossPrice}">...</td>
-						<td th:utext="${product?.taxRate}">...</td>
-						<td th:utext="${product?.quantityInWarehouse}">...</td>
-						<td th:utext="${product?.quantityInStore}">...</td>
-						<td th:utext="${product?.unit}">...</td>
-
-					</tr>
-				</table>
+			</div>
+			<div th:if="${product?.id != maxProductId}">
+				<form id="next-btn"
+					th:action="@{/productDetails/}+ ${product?.id + 1}">
+					<input class="button" type="submit" value="next >>">
+				</form>
 			</div>
 
-			<h2>Related Orders:</h2>
+		</span> </br> </br>
+
+		<div>
 			<table border="1">
 				<tr class="table-top">
 					<th>ID</th>
-					<th>Date and time</th>
+					<th>Brand</th>
+					<th>Name</th>
+					<th>Category</th>
 					<th>Quantity</th>
-					<th>Action</th>
+					<th>Net price(PLN)</th>
+					<th>Gross price (PLN)</th>
+					<th>Tax rate (%)</th>
+					<th>Quantity in warehouse</th>
+					<th>Quantity in store</th>
+					<th>Unit</th>
 				</tr>
-				<tr th:each="order: ${orders}">
-					<td th:utext="${order?.id}">...</td>
-					<td
-						th:text="${#dates.format(order?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
-					<td th:utext="${order?.quantity}">...</td>
-					<td>
-						<form th:action="@{/orderDetails/}+ ${order?.id}">
-							<input type="submit" class="button" value="Details >>">
-						</form>
-					</td>
-					</div>
+				<tr>
+					<td th:utext="${product?.id}">...</td>
+					<td th:utext="${product?.brand}">...</td>
+					<td th:utext="${product?.name}">...</td>
+					<td th:utext="${product?.category}">...</td>
+					<td th:utext="${product?.quantity}">...</td>
+					<td th:utext="${product?.netPrice}">...</td>
+					<td th:utext="${product?.grossPrice}">...</td>
+					<td th:utext="${product?.taxRate}">...</td>
+					<td th:utext="${product?.quantityInWarehouse}">...</td>
+					<td th:utext="${product?.quantityInStore}">...</td>
+					<td th:utext="${product?.unit}">...</td>
 
 				</tr>
 			</table>
+		</div>
 
-			<h2>Related Supplies:</h2>
-			<table border="1">
-				<tr class="table-top">
-					<th>ID</th>
-					<th>Date and time</th>
-					<th>Quantity</th>
-					<th>Action</th>
-				</tr>
-				<tr th:each="supply: ${supplies}">
+		<h2>Related Orders:</h2>
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Date and time</th>
+				<th>Quantity</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="order: ${orders}">
+				<td th:utext="${order?.id}">...</td>
+				<td th:text="${#dates.format(order?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
+				<td th:utext="${order?.quantity}">...</td>
+				<td>
+					<form th:action="@{/orderDetails/}+ ${order?.id}">
+						<input type="submit" class="button" value="Details >>">
+					</form>
+				</td>
+				</div>
+			</tr>
+		</table>
 
-					<td th:utext="${supply?.Id}">...</td>
-					<td
-						th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
-					<td th:utext="${supply?.quantity}">...</td>
-					<td>
-						<form th:action="@{/supplyDetails/}+ ${supply?.id}">
-							<input type="submit" class="button" value="Details >>">
-						</form>
-					</td>
-				</tr>
-			</table>
+		<h2>Related Supplies:</h2>
+		<table border="1">
+			<tr class="table-top">
+				<th>ID</th>
+				<th>Date and time</th>
+				<th>Quantity</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="supply: ${supplies}">
+
+				<td th:utext="${supply?.Id}">...</td>
+				<td th:utext="${#dates.format(supply?.dateAndTime, 'dd-MMM-yyyy  HH:mm:ss')}"></td>
+				<td th:utext="${supply?.quantity}">...</td>
+				<td>
+					<form th:action="@{/supplyDetails/}+ ${supply?.id}">
+						<input type="submit" class="button" value="Details >>">
+					</form>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 </body>
 </html>
-

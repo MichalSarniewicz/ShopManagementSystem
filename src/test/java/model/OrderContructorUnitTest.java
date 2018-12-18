@@ -13,6 +13,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import app.ShopManagementSystemApplication;
 import model.Order;
 
+/*
+ * Unit test for Order contructor
+ */
 @ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest

@@ -86,6 +86,4 @@ public class SupplyDetails {
 	public void setSupplyDetailsId(Long orderDetailsId) {
 		this.supplyDetailsId = orderDetailsId;
 	}
-
-
 }

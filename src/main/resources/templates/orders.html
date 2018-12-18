@@ -7,6 +7,7 @@
 </head>
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -20,7 +21,8 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a class="active" href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/orders">Orders</a> <i
+					class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
@@ -51,12 +53,13 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > Orders
 
 		<h1 class="h1-left">Orders</h1>
-</br> </br> </br> </br>
+		</br> </br> </br> </br>
 		<div>
 			<table border="1">
 				<tr class="table-top">
@@ -66,7 +69,6 @@
 					<th>Action</th>
 				</tr>
 				<tr th:each="order : ${orders}">
-
 					<td th:utext="${order.id}">...</td>
 					<td
 						th:utext="${#dates.format(order.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
@@ -76,7 +78,6 @@
 							<input type="submit" class="button" value="Details >>">
 						</form>
 					</td>
-
 				</tr>
 			</table>
 		</div>

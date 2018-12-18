@@ -7,6 +7,7 @@
 </head>
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -52,14 +53,13 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > Suppliers
 
 		<h1 class="h1-left">Suppliers</h1>
-		</br>
-		</br>
-		</br>
+		</br> </br> </br>
 		<div>
 			<table border="1">
 				<tr class="table-top">
@@ -70,10 +70,8 @@
 					<th>E-mail</th> 
 					<th>Comment</th>
 					<th>Action</th>
-
 				</tr>
 				<tr th:each="supplier : ${suppliers}">
-
 					<td th:utext="${supplier.id}">...</td>
 					<td th:utext="${supplier.name}">...</td>
 					<td th:utext="${supplier.adress}">...</td>

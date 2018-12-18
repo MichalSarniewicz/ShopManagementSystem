@@ -34,7 +34,6 @@ public class ProductWithOrderInfo {
 	@NotNull
 	private BigDecimal grossSum;
 	
-
 	/**
 	 * Empty contructor.
 	 */

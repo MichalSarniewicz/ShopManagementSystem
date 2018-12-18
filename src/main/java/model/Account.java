@@ -1,5 +1,6 @@
 package model;
  
+//This class will be used soon
 
 public class Account {
  

@@ -7,6 +7,7 @@
 </head>
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -29,7 +30,8 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a class="active" href="/supplies">Supplies</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/supplies">Supplies</a> <i
+					class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/supplies">Supply list</a> <a href="/supplyDetails/1">Supply
@@ -51,12 +53,13 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > Supplies
 
 		<h1 class="h1-left">Supplies</h1>
-</br></br></br></br>
+		</br> </br> </br> </br>
 		<div>
 			<table border="1">
 				<tr class="table-top">
@@ -72,8 +75,7 @@
 					<td th:utext="${supply.id}">...</td>
 					<td th:utext="${supply.netSum}">...</td>
 					<td th:utext="${supply.grossSum}">...</td>
-					<td
-						th:utext="${#dates.format(supply.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
+					<td th:utext="${#dates.format(supply.dateAndTime, 'HH:mm:ss dd-MM-yyyy')}">...</td>
 					<td th:utext="${supply.supplierId}">...</td>
 
 					<td>
@@ -81,7 +83,6 @@
 							<input type="submit" class="button" value="Details >>">
 						</form>
 					</td>
-
 				</tr>
 			</table>
 		</div>

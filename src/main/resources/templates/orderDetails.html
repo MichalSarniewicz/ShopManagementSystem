@@ -9,6 +9,7 @@
 </head>
 <body>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -22,7 +23,8 @@
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				<a class="active" href="/orders">Orders</a> <i class="fa fa-caret-down"></i>
+				<a class="active" href="/orders">Orders</a> <i
+					class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<a href="/orders">Order list</a> <a href="/orderDetails/1">Order
@@ -53,30 +55,26 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 
 		<a th:href="@{/home}">Home </a> > <a th:href="@{/orders}"> Order </a>
 		> Order details
 
-
 		<h1 class="h1-left">Order details</h1>
-</br> </br></br>
-		<span class="nav-buttons"> 
+		</br> </br> </br> <span class="nav-buttons">
 			<div th:if="${order?.id != 1}">
-				<form id="prev-btn"
-					th:action="@{/orderDetails/}+ ${order?.id - 1}">
-					<input class = "button" type="submit" value="<< previous">
-				</form>
-			</div>
- 
-			<div th:if="${order?.id != maxOrderId}">
-				<form id="next-btn"
-					th:action="@{/orderDetails/}+ ${order?.id + 1}">
-					<input class = "button" type="submit" value="next >>">
+				<form id="prev-btn" th:action="@{/orderDetails/}+ ${order?.id - 1}">
+					<input class="button" type="submit" value="<< previous">
 				</form>
 			</div>
 
-		</span>  </br>
+			<div th:if="${order?.id != maxOrderId}">
+				<form id="next-btn" th:action="@{/orderDetails/}+ ${order?.id + 1}">
+					<input class="button" type="submit" value="next >>">
+				</form>
+			</div>
+		</span> </br>
 
 		<div>
 			<table border="1">
@@ -88,7 +86,6 @@
 					<th>Employee ID</th>
 					<th>Cashdesk ID</th>
 				</tr>
-
 				<tr>
 					<td th:utext="${order?.id}">...</td>
 					<td th:utext="${order?.netPrice}">...</td>
@@ -126,7 +123,6 @@
 						<input type="submit" class="button" value="Details >>">
 					</form>
 				</td>
-
 			</tr>
 		</table>
 	</div>

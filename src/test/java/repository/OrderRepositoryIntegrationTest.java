@@ -17,7 +17,9 @@ import app.ShopManagementSystemApplication;
 import model.Order;
 import repository.OrderRepository;
 
-//@SpringBootTest(classes = { ShopManagementSystemApplication.class })
+/*
+ * Integration test for Order repository
+ */
 @ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest

@@ -71,8 +71,6 @@ tr:hover {
 	background-color: #f5f5f5;
 }
 
-/*////////////////////////////////////////*/
-
 /* Navbar container */
 .navbar {
 	overflow: hidden;
@@ -110,7 +108,7 @@ tr:hover {
 	border: none;
 	outline: none;
 	color: white;
-	padding: 0px 0px; /*last version 14,16*/
+	padding: 0px 0px; 
 	background-color: inherit;
 	font-family: inherit;
 	/* Important for vertical align on mobile phones */
@@ -332,16 +330,6 @@ tr:hover {
 	margin-left: 800px;
 	
 }
-/*	
-	position : relative;
-	padding: 15px;
-	text-align: center;
-	table-layout: auto;
-	display: flex;
-	flex-direction: row;
-	position: relative;
-	font-size: 30px;
-}*/
 
 .button {
 	background-color: #f5f5f5;

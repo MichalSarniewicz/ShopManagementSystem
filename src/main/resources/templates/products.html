@@ -29,6 +29,7 @@
 		var intToGrossPrice = parseInt(urlParams.get('toGrossPrice'), 10);
 	</script>
 
+	<!------------------------------------NAVBAR------------------------------------------>
 	<div class="navbar">
 		<a id=link href="/home">Home</a>
 		<div class="dropdown">
@@ -74,6 +75,7 @@
 		</div>
 	</div>
 
+	<!------------------------------------CONTENT------------------------------------------>
 	<div class="content">
 		<a th:href="@{/home}">Home </a> > Products
 
@@ -116,9 +118,10 @@
 					type="submit" class="button" value="Submit">
 			</div>
 
-		</form> </br>
+		</form>
+		</br>
 		<table border="1">
-			
+
 			<tr class="table-top">
 				<th>ID</th>
 				<th>Category</th>
@@ -181,7 +184,6 @@
 														<input type="submit" class="button" value="Details >>">
 													</form>
 												</td>
-
 											</div>
 										</div>
 									</div>
@@ -192,8 +194,6 @@
 				</div>
 			</tr>
 		</table>
-	</div>
-
 	</div>
 </body>
 </html>

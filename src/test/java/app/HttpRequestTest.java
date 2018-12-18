@@ -1,5 +1,8 @@
 package app;
 
+/*
+ * Simple http integration test
+ */
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -12,10 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-//@WebMvcTest
 public class HttpRequestTest {
 
     @LocalServerPort

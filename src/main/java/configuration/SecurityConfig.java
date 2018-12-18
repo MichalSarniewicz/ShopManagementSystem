@@ -22,6 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
  	/**
  	 * This class sets users and passwords
  	 * @param auth
@@ -34,12 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
         .passwordEncoder(delegatingPasswordEncoder)
-        .withUser("admin").password("{bcrypt}$2a$04$0X9TeVhmFhkA3ZsOISAF2OFSTmUaEqsWsJcR.acdNgkHK4QYuNFmW").roles("ADMIN")//admin admin
+        .withUser("admin").password("{bcrypt}$2a$04$0X9TeVhmFhkA3ZsOISAF2OFSTmUaEqsWsJcR.acdNgkHK4QYuNFmW").roles("ADMIN")
         //generate hashes with $2a$, only this way it works, https://www.dailycred.com/article/bcrypt-calculator
         
         .and()
         
-        .withUser("user").password("{bcrypt}$2a$04$snWCTLfoZ9qa5bTH.68.Qeet8/RobbVOBmhYy8tGBM2Br/HqTw6Gy")//user user
+        .withUser("user").password("{bcrypt}$2a$04$snWCTLfoZ9qa5bTH.68.Qeet8/RobbVOBmhYy8tGBM2Br/HqTw6Gy")
         .roles("USER");
     }
     

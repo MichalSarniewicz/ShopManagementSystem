@@ -1,5 +1,7 @@
 package form;
 
+//This class will be used soon
+
 import java.math.BigDecimal;
 
 public class ProductForm {

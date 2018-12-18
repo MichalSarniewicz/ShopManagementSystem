@@ -11,6 +11,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import app.ShopManagementSystemApplication;
 import model.Supplier;
 
+/*
+ * Unit test for Supplier contructor
+ */
 @ContextConfiguration(classes=ShopManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest

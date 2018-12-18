@@ -1,5 +1,7 @@
 package form;
  
+//This class will be used soon
+
 public class AccountForm {
  
     private String login;

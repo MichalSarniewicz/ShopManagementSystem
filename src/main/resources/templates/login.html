@@ -8,25 +8,29 @@
 </head>
 
 <body>
-<div class="login-page">
-	<div class="form">
-		<h2 id= welcome>Welcome</h2>
-		<div th:if=" ${#httpServletRequest.getParameter('message')} == 'error'">
-		<p class="message">Incorrect username or password.</p>
+	<div class="login-page">
+		<div class="form">
+			<h2 id=welcome>Welcome</h2>
+			<div
+				th:if=" ${#httpServletRequest.getParameter('message')} == 'error'">
+				<p class="message">Incorrect username or password.</p>
+			</div>
+			<div
+				th:if=" ${#httpServletRequest.getParameter('message')} == 'logout'">
+				<p class="message">You have been logged out.</p>
+			</div>
+			<form class="login-form" th:action="@{/login}" method="post">
+				<input type="text" id="username" name="username"
+					placeholder="username" /> <input type="password" id="password"
+					name="password" placeholder="password" />
+				<button>login</button>
+				<p class="message2">
+					Not registered? <a
+						href="mailto:michal.sarniewicz@gmail.com?Subject=Accountr%20Registration"
+						target="_top">Contact admin</a>
+				</p>
+			</form>
 		</div>
-		<div th:if=" ${#httpServletRequest.getParameter('message')} == 'logout'">
-		<p class="message">You have been logged out.</p>
-		</div>
-		<form class="login-form" th:action="@{/login}" method="post">
-			<input type="text" id="username" name="username" placeholder="username" /> 
-			<input type="password" id="password" name="password" placeholder="password" />
-			<button>login</button>
-			<p class="message2">
-				Not registered? <a href="mailto:michal.sarniewicz@gmail.com?Subject=Accountr%20Registration" target="_top">Contact admin</a>
-			</p>
-		</form>
 	</div>
-</div>
-
 </body>
 </html>

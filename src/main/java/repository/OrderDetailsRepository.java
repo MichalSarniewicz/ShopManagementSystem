@@ -18,5 +18,4 @@ public interface OrderDetailsRepository extends CrudRepository<OrderDetails, Lon
 	List<OrderDetails> findByProductId(Long id);
 	List<OrderDetails> findAll();
 	List<OrderDetails> findByOrderId(Long id);
-	
 }
