@@ -3,6 +3,8 @@ Shop Management System
 
 Simple Spring Boot application for management products, orders, supplies, suppliers etc.
 
+![alt text](https://raw.githubusercontent.com/MichalSarniewicz/ShopManagementSystem/master/screenshot.png)
+
 <span id="anchor"></span>General info
 -------------------------------------
 
@@ -17,7 +19,7 @@ If you need more informations, check the documentation.
 
 -    Java 8
 -    Spring Boot 2.0.3.RELEASE (Web, Jpa, Security, Test)
--    ****Thymeleaf 3.0.11.RELEASE**** 
+-    Thymeleaf 3.0.11.RELEASE
 -    MySql 8.0.13
 -    H2 Database Engine 1.4.196
 -    Maven 4.0.0
@@ -32,8 +34,8 @@ If you need more informations, check the documentation.
 3.   Click run button.
 4.   Open [http://localhost:8080](http://localhost:8080/)
 5.   Log in as:
-    Username: user
-    Password: user
+    username: user
+    password: user
 
 <span id="anchor-3"></span>Features
 -----------------------------------
@@ -55,7 +57,7 @@ To-do list:
 <span id="anchor-4"></span>Status
 ---------------------------------
 
-Project is:** ******in progress****
+Project is: **in progress**
 
 Author
 ------
